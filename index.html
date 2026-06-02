@@ -4,17 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Xavier Mareca — Data & AI Consultant</title>
-  <meta name="description" content="Xavier Mareca is a Data & AI Consultant helping companies extract real value from their data using Power BI, LangChain, CrewAI, PySpark and Anthropic Claude." />
+  <meta name="description" content="Xavier Mareca — Data & AI Consultant. Power BI, CrewAI, LangChain, PySpark, Anthropic Claude." />
   <meta property="og:title" content="Xavier Mareca — Data & AI Consultant" />
-  <meta property="og:description" content="Practical data and AI systems, without the hype. Power BI · CrewAI · LangChain · PySpark · Microsoft Fabric." />
-  <meta property="og:type" content="website" />
+  <meta property="og:description" content="Practical data and AI systems, without the hype." />
   <meta property="og:url" content="https://xavierdatatech.com" />
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Xavier Mareca — Data & AI Consultant" />
-  <meta name="twitter:description" content="Practical data and AI systems, without the hype." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:opsz,wght@9..40,300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:opsz,wght@9..40,400;500;600&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
@@ -27,12 +23,12 @@
       --accent-border: rgba(77,159,255,0.22);
       --accent-green: #34d399;
       --accent-green-dim: rgba(52,211,153,0.07);
-      --accent-green-border: rgba(52,211,153,0.18);
+      --accent-green-border: rgba(52,211,153,0.2);
       --text-primary: #f0ede8;
       --text-secondary: #9a9790;
-      --text-muted: #4a4845;
-      --border: rgba(255,255,255,0.06);
-      --border-hover: rgba(255,255,255,0.12);
+      --text-muted: #5a5855;
+      --border: rgba(255,255,255,0.07);
+      --border-hover: rgba(255,255,255,0.13);
       --mono: 'Space Mono', monospace;
       --sans: 'DM Sans', sans-serif;
       --radius: 10px;
@@ -40,7 +36,7 @@
     html { scroll-behavior: smooth; }
     body {
       background: var(--bg); color: var(--text-primary);
-      font-family: var(--sans); font-size: 17px; line-height: 1.7;
+      font-family: var(--sans); font-size: 16px; line-height: 1.6;
       overflow-x: hidden;
     }
     body::before {
@@ -65,8 +61,8 @@
       border-bottom: 1px solid var(--border); padding: 0.9rem 0;
     }
     .nav-inner { display: flex; align-items: center; justify-content: space-between; }
-    .nav-logo { text-decoration: none; display: flex; align-items: center; }
-    .nav-links { display: flex; gap: 1.75rem; align-items: center; }
+    .nav-logo { text-decoration: none; }
+    .nav-links { display: flex; gap: 2rem; align-items: center; }
     .nav-links a {
       font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em;
       text-transform: uppercase; color: var(--text-muted); text-decoration: none; transition: color 0.15s;
@@ -74,13 +70,13 @@
     .nav-links a:hover { color: var(--accent); }
 
     /* HERO */
-    .hero { padding: 5rem 0 3.5rem; }
+    .hero { padding: 5.5rem 0 4rem; }
     .hero-eyebrow {
       display: inline-flex; align-items: center; gap: 0.5rem;
       font-family: var(--mono); font-size: 11px; color: var(--accent);
-      letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 1.5rem;
+      letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 1.75rem;
       background: var(--accent-dim); border: 1px solid var(--accent-border);
-      padding: 0.35rem 0.8rem; border-radius: 100px;
+      padding: 0.35rem 0.85rem; border-radius: 100px;
     }
     .hero-eyebrow::before {
       content: ''; width: 6px; height: 6px; border-radius: 50%;
@@ -88,8 +84,8 @@
     }
     @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(0.8)} }
     h1 {
-      font-family: var(--mono); font-size: clamp(2.6rem, 6vw, 4rem);
-      font-weight: 700; line-height: 1.08; letter-spacing: -0.025em; margin-bottom: 0.5rem;
+      font-family: var(--mono); font-size: clamp(3rem, 6.5vw, 4.5rem);
+      font-weight: 700; line-height: 1.05; letter-spacing: -0.025em; margin-bottom: 1rem;
     }
     h1 .name { color: var(--text-primary); }
     h1 .accent { color: var(--accent); }
@@ -98,24 +94,17 @@
       margin-left: 2px; vertical-align: middle; animation: blink 1s step-end infinite;
     }
     @keyframes blink { 50%{opacity:0} }
-    .hero-role {
-      font-family: var(--mono); font-size: 12px; color: var(--text-muted);
-      letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 1.25rem;
-    }
     .hero-tagline {
-      font-size: 1.1rem; color: var(--text-primary); font-weight: 600;
-      margin-bottom: 0.75rem; max-width: 520px; line-height: 1.65;
+      font-size: 1.15rem; color: var(--text-secondary);
+      max-width: 480px; line-height: 1.7; margin-bottom: 2.25rem;
     }
-    .hero-sub {
-      font-size: 0.95rem; color: var(--text-secondary);
-      max-width: 560px; line-height: 1.8; margin-bottom: 2rem;
-    }
+    .hero-tagline strong { color: var(--text-primary); }
     .hero-actions { display: flex; gap: 0.75rem; flex-wrap: wrap; }
     .btn {
       display: inline-flex; align-items: center; gap: 0.5rem;
       font-family: var(--mono); font-size: 12px; letter-spacing: 0.08em;
-      text-transform: uppercase; text-decoration: none; padding: 0.7rem 1.4rem;
-      border-radius: 6px; transition: all 0.18s; border: 1px solid; cursor: pointer;
+      text-transform: uppercase; text-decoration: none; padding: 0.75rem 1.5rem;
+      border-radius: 6px; transition: all 0.18s; border: 1px solid;
     }
     .btn-primary { background: var(--accent); color: #07080a; border-color: var(--accent); font-weight: 700; }
     .btn-primary:hover { background: transparent; color: var(--accent); }
@@ -124,82 +113,68 @@
     .btn svg { width: 14px; height: 14px; }
 
     /* SECTIONS */
-    section { padding: 3rem 0; border-top: 1px solid var(--border); }
-    .section-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.75rem; }
+    section { padding: 3.5rem 0; border-top: 1px solid var(--border); }
+    .section-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 2rem; }
     .section-tag {
       font-family: var(--mono); font-size: 10px; color: var(--accent);
-      letter-spacing: 0.2em; text-transform: uppercase; opacity: 0.7; white-space: nowrap;
+      letter-spacing: 0.2em; text-transform: uppercase; opacity: 0.65; white-space: nowrap;
     }
     .section-line { flex: 1; height: 1px; background: var(--border); }
     h2 {
-      font-family: var(--mono); font-size: 1.3rem; font-weight: 700;
-      color: var(--text-primary); margin-bottom: 0.4rem; letter-spacing: -0.01em;
+      font-family: var(--mono); font-size: 1.5rem; font-weight: 700;
+      color: var(--text-primary); letter-spacing: -0.01em;
     }
-    .section-desc { font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1.75rem; }
 
-    /* FOCUS */
-    .focus-list { display: flex; flex-direction: column; gap: 0.6rem; }
+    /* FOCUS — compact list */
+    .focus-list { display: flex; flex-direction: column; gap: 0.5rem; margin-top: 1.5rem; }
     .focus-item {
-      display: flex; align-items: flex-start; gap: 0.75rem;
+      display: flex; align-items: center; gap: 0.75rem;
       background: var(--bg-card); border: 1px solid var(--border);
-      border-radius: var(--radius); padding: 0.85rem 1.2rem; transition: border-color 0.18s, background 0.18s;
+      border-radius: 8px; padding: 0.8rem 1.1rem; transition: border-color 0.18s, background 0.18s;
     }
     .focus-item:hover { border-color: var(--accent-border); background: var(--bg-hover); }
-    .focus-dot {
-      width: 5px; height: 5px; border-radius: 50%; background: var(--accent);
-      flex-shrink: 0; margin-top: 8px; opacity: 0.8;
-    }
-    .focus-text { font-size: 16px; color: var(--text-secondary); line-height: 1.6; }
+    .focus-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--accent); flex-shrink: 0; opacity: 0.8; }
+    .focus-text { font-size: 15px; color: var(--text-secondary); }
     .focus-text strong { color: var(--text-primary); font-weight: 600; }
     .focus-badge {
-      display: inline-block; font-family: var(--mono); font-size: 9px;
+      margin-left: auto; font-family: var(--mono); font-size: 9px;
       letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent);
       background: var(--accent-dim); border: 1px solid var(--accent-border);
-      padding: 0.12rem 0.45rem; border-radius: 100px; margin-left: 0.5rem; vertical-align: middle;
+      padding: 0.12rem 0.5rem; border-radius: 100px; white-space: nowrap; flex-shrink: 0;
     }
 
-    /* PROJECTS — 2 col grid on desktop */
-    .projects-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1rem;
-    }
+    /* PROJECTS — 2 col, minimal */
+    .projects-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.85rem; margin-top: 1.5rem; }
     .project-card {
       background: var(--bg-card); border: 1px solid var(--border);
-      border-radius: var(--radius); padding: 1.3rem 1.4rem;
+      border-radius: var(--radius); padding: 1.2rem 1.3rem;
       transition: border-color 0.18s, background 0.18s;
-      display: flex; flex-direction: column; gap: 0.6rem;
+      display: flex; flex-direction: column; gap: 0.75rem;
     }
     .project-card:hover { border-color: var(--accent-border); background: var(--bg-hover); }
     .project-title {
-      font-family: var(--mono); font-size: 14px; font-weight: 700;
-      color: var(--text-primary); line-height: 1.45;
+      font-family: var(--mono); font-size: 13px; font-weight: 700;
+      color: var(--text-primary); line-height: 1.4;
     }
-    .project-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.6; flex: 1; }
     .project-result {
       display: inline-block; font-family: var(--mono); font-size: 10px;
       color: var(--accent-green); background: var(--accent-green-dim);
       border: 1px solid var(--accent-green-border);
-      border-radius: 5px; padding: 0.2rem 0.6rem;
+      border-radius: 4px; padding: 0.18rem 0.55rem;
     }
     .project-stack { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-top: auto; }
     .stack-tag {
-      font-family: var(--mono); font-size: 11px; letter-spacing: 0.05em;
+      font-family: var(--mono); font-size: 11px;
       color: var(--text-secondary); background: var(--bg-hover);
       border: 1px solid var(--border-hover); border-radius: 4px; padding: 0.2rem 0.5rem;
     }
 
-    /* STACK */
-    .stack-groups { display: flex; flex-direction: column; gap: 1.25rem; }
-    .stack-group-label {
-      font-family: var(--mono); font-size: 10px; color: var(--accent);
-      letter-spacing: 0.15em; text-transform: uppercase; opacity: 0.65; margin-bottom: 0.55rem;
-    }
-    .pills { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    /* STACK — just pills */
+    .pills { display: flex; flex-wrap: wrap; gap: 0.55rem; margin-top: 1.5rem; }
     .pill {
-      display: flex; align-items: center; gap: 0.45rem;
+      display: flex; align-items: center; gap: 0.5rem;
       background: var(--bg-card); border: 1px solid var(--border);
-      border-radius: 7px; padding: 0.42rem 0.8rem;
+      border-radius: 8px; padding: 0.55rem 1rem;
       font-size: 14px; font-weight: 500; color: var(--text-primary); transition: all 0.15s;
     }
     .pill:hover { border-color: var(--accent-border); background: var(--bg-hover); }
@@ -209,22 +184,21 @@
     }
 
     /* CONTACT */
-    .contact-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+    .contact-row { display: flex; gap: 1rem; margin-top: 1.5rem; flex-wrap: wrap; }
     .link-card {
       display: flex; align-items: center; gap: 0.85rem;
       background: var(--bg-card); border: 1px solid var(--border);
-      border-radius: var(--radius); padding: 1rem 1.1rem;
-      text-decoration: none; transition: all 0.18s;
+      border-radius: var(--radius); padding: 1rem 1.25rem;
+      text-decoration: none; transition: all 0.18s; flex: 1; min-width: 160px;
     }
     .link-card:hover { border-color: var(--accent-border); background: var(--bg-hover); transform: translateY(-2px); }
     .link-card-icon {
-      width: 34px; height: 34px; border-radius: 8px;
+      width: 36px; height: 36px; border-radius: 8px;
       background: var(--accent-dim); border: 1px solid var(--accent-border);
       display: flex; align-items: center; justify-content: center; flex-shrink: 0;
     }
-    .link-card-icon svg { width: 15px; height: 15px; fill: var(--accent); }
-    .link-card-title { font-family: var(--mono); font-size: 12px; font-weight: 700; color: var(--text-primary); }
-    .link-card-desc { font-size: 11px; color: var(--text-muted); margin-top: 1px; }
+    .link-card-icon svg { width: 16px; height: 16px; fill: var(--accent); }
+    .link-card-title { font-family: var(--mono); font-size: 13px; font-weight: 700; color: var(--text-primary); }
 
     /* FOOTER */
     footer { border-top: 1px solid var(--border); padding: 2rem 0; margin-top: 1rem; }
@@ -241,10 +215,10 @@
     @media (max-width: 640px) {
       .wrap { padding: 0 1.25rem; }
       .hero { padding: 3.5rem 0 2.5rem; }
-      h1 { font-size: 2.2rem; }
-      .nav-links { gap: 1rem; }
+      h1 { font-size: 2.4rem; }
+      .nav-links { gap: 1.25rem; }
       .projects-grid { grid-template-columns: 1fr; }
-      .contact-grid { grid-template-columns: 1fr; }
+      .contact-row { flex-direction: column; }
     }
   </style>
 </head>
@@ -269,7 +243,6 @@
       <a href="#focus">Focus</a>
       <a href="#projects">Projects</a>
       <a href="#stack">Stack</a>
-      <a href="#contact">Contact</a>
     </div>
   </div>
 </nav>
@@ -279,9 +252,7 @@
   <div class="hero">
     <div class="hero-eyebrow">Open to collaborations</div>
     <h1><span class="name">Xavier</span><br><span class="accent">Mareca</span><span class="cursor"></span></h1>
-    <p class="hero-role">Data &amp; AI Consultant</p>
-    <p class="hero-tagline">I build practical data and AI systems, without the hype.</p>
-    <p class="hero-sub">Helping companies extract real value from their data by combining modern BI (Power BI + Fabric), robust data pipelines (PySpark + Databricks), and intelligent multi-agent applications with CrewAI, LangChain and Claude.</p>
+    <p class="hero-tagline"><strong>Data &amp; AI Consultant.</strong> Practical systems, without the hype.</p>
     <div class="hero-actions">
       <a class="btn btn-primary" href="https://www.linkedin.com/in/xavier-mareca-247344148/?locale=en" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
@@ -295,63 +266,50 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
         Contact
       </a>
+      <a class="btn btn-ghost" href="https://x.com/xavierdatatech" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.737-8.835L1.254 2.25H8.08l4.253 5.622 5.911-5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        X
+      </a>
     </div>
   </div>
 
   <section id="focus">
     <div class="section-header"><span class="section-tag">Currently</span><div class="section-line"></div></div>
     <h2>Current focus</h2>
-    <p class="section-desc">What I'm building and delivering right now.</p>
     <div class="focus-list">
-      <div class="focus-item"><div class="focus-dot"></div><p class="focus-text">Multi-agent systems with <strong>CrewAI + LangChain + Anthropic Claude</strong></p></div>
-      <div class="focus-item"><div class="focus-dot"></div><p class="focus-text"><strong>RAG systems</strong> and AI assistants for business data</p></div>
-      <div class="focus-item"><div class="focus-dot"></div><p class="focus-text">Modern BI solutions with <strong>Power BI</strong> and <strong>Microsoft Fabric</strong></p></div>
-      <div class="focus-item"><div class="focus-dot"></div><p class="focus-text">Large-scale pipelines with <strong>PySpark + Delta Lake</strong> on Databricks</p></div>
-      <div class="focus-item"><div class="focus-dot"></div><p class="focus-text"><strong>Microsoft Fabric</strong> — Lakehouse, Data Warehouse &amp; Real-time Intelligence <span class="focus-badge">DP-700</span></p></div>
-      <div class="focus-item"><div class="focus-dot"></div><p class="focus-text"><strong>AWS Machine Learning Engineer</strong> training <span class="focus-badge">In progress</span></p></div>
+      <div class="focus-item"><div class="focus-dot"></div><p class="focus-text"><strong>CrewAI + LangChain + Claude</strong> — multi-agent systems</p></div>
+      <div class="focus-item"><div class="focus-dot"></div><p class="focus-text"><strong>RAG systems</strong> for business data</p></div>
+      <div class="focus-item"><div class="focus-dot"></div><p class="focus-text"><strong>Power BI + Microsoft Fabric</strong> — modern BI</p></div>
+      <div class="focus-item"><div class="focus-dot"></div><p class="focus-text"><strong>PySpark + Delta Lake</strong> on Databricks</p></div>
+      <div class="focus-item"><div class="focus-dot"></div><p class="focus-text">Microsoft Fabric <span class="focus-badge">DP-700</span></p></div>
+      <div class="focus-item"><div class="focus-dot"></div><p class="focus-text">AWS Machine Learning Engineer <span class="focus-badge">In progress</span></p></div>
     </div>
   </section>
 
   <section id="projects">
     <div class="section-header"><span class="section-tag">Work</span><div class="section-line"></div></div>
     <h2>Selected projects</h2>
-    <p class="section-desc">Real deliverables, real results.</p>
     <div class="projects-grid">
       <div class="project-card">
         <p class="project-title">AI-Powered BI Assistant</p>
-        <p class="project-desc">Natural language querying over structured data. Business users get insights by asking questions in plain English.</p>
-        <div class="project-stack">
-          <span class="stack-tag">LangChain</span><span class="stack-tag">RAG</span><span class="stack-tag">Claude</span><span class="stack-tag">FastAPI</span><span class="stack-tag">PostgreSQL</span>
-        </div>
+        <div class="project-stack"><span class="stack-tag">LangChain</span><span class="stack-tag">RAG</span><span class="stack-tag">Claude</span><span class="stack-tag">FastAPI</span></div>
       </div>
       <div class="project-card">
         <p class="project-title">Multi-Agent Automation System</p>
-        <p class="project-desc">CrewAI-based workflow for automated data extraction, transformation, and reporting.</p>
-        <div class="project-stack">
-          <span class="stack-tag">CrewAI</span><span class="stack-tag">LangChain</span><span class="stack-tag">Python</span><span class="stack-tag">FastAPI</span>
-        </div>
+        <div class="project-stack"><span class="stack-tag">CrewAI</span><span class="stack-tag">LangChain</span><span class="stack-tag">Python</span></div>
       </div>
       <div class="project-card">
         <p class="project-title">Executive BI Platform</p>
-        <p class="project-desc">Real-time executive dashboards with automated data pipelines.</p>
-        <span class="project-result">15–20 hours saved per week</span>
-        <div class="project-stack">
-          <span class="stack-tag">Power BI</span><span class="stack-tag">Python</span><span class="stack-tag">Databricks</span><span class="stack-tag">PySpark</span>
-        </div>
+        <span class="project-result">15–20h saved/week</span>
+        <div class="project-stack"><span class="stack-tag">Power BI</span><span class="stack-tag">PySpark</span><span class="stack-tag">Databricks</span></div>
       </div>
       <div class="project-card">
         <p class="project-title">Internal Data Support Agent</p>
-        <p class="project-desc">Conversational agent that answers complex queries about corporate data.</p>
-        <div class="project-stack">
-          <span class="stack-tag">LangChain</span><span class="stack-tag">CrewAI</span><span class="stack-tag">FastAPI</span><span class="stack-tag">Azure</span>
-        </div>
+        <div class="project-stack"><span class="stack-tag">LangChain</span><span class="stack-tag">CrewAI</span><span class="stack-tag">Azure</span></div>
       </div>
       <div class="project-card">
         <p class="project-title">Data Pipeline Optimization</p>
-        <p class="project-desc">Efficient large-scale data processing pipelines on Databricks.</p>
-        <div class="project-stack">
-          <span class="stack-tag">PySpark</span><span class="stack-tag">Delta Lake</span><span class="stack-tag">Databricks</span><span class="stack-tag">SQL</span>
-        </div>
+        <div class="project-stack"><span class="stack-tag">PySpark</span><span class="stack-tag">Delta Lake</span><span class="stack-tag">Databricks</span></div>
       </div>
     </div>
   </section>
@@ -359,40 +317,23 @@
   <section id="stack">
     <div class="section-header"><span class="section-tag">Skills</span><div class="section-line"></div></div>
     <h2>Tech stack</h2>
-    <p class="section-desc">Tools I use to build BI systems and AI applications.</p>
-    <div class="stack-groups">
-      <div><p class="stack-group-label">BI &amp; Visualization</p>
-        <div class="pills"><div class="pill">Power BI</div><div class="pill">Microsoft Fabric</div><div class="pill">DAX</div></div>
-      </div>
-      <div><p class="stack-group-label">AI &amp; Agents</p>
-        <div class="pills"><div class="pill">CrewAI</div><div class="pill">LangChain</div><div class="pill">Anthropic Claude</div><div class="pill">RAG</div><div class="pill">Ollama</div></div>
-      </div>
-      <div><p class="stack-group-label">Data Engineering</p>
-        <div class="pills"><div class="pill">PySpark</div><div class="pill">Delta Lake</div><div class="pill">SQL</div><div class="pill">Databricks</div><div class="pill">Python</div></div>
-      </div>
-      <div><p class="stack-group-label">Platforms &amp; Cloud</p>
-        <div class="pills"><div class="pill">Azure</div><div class="pill">AWS</div><div class="pill">FastAPI</div></div>
-      </div>
-    </div>
-  </section>
-
-  <section id="contact">
-    <div class="section-header"><span class="section-tag">Contact</span><div class="section-line"></div></div>
-    <h2>Get in touch</h2>
-    <p class="section-desc">Let's talk about your data challenges.</p>
-    <div class="contact-grid">
-      <a class="link-card" href="https://www.linkedin.com/in/xavier-mareca-247344148/?locale=en" target="_blank" rel="noopener">
-        <div class="link-card-icon"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></div>
-        <div><div class="link-card-title">LinkedIn</div><div class="link-card-desc">Professional profile</div></div>
-      </a>
-      <a class="link-card" href="https://github.com/xdt-ai" target="_blank" rel="noopener">
-        <div class="link-card-icon"><svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg></div>
-        <div><div class="link-card-title">GitHub</div><div class="link-card-desc">Code &amp; projects</div></div>
-      </a>
-      <a class="link-card" href="mailto:hello@xavierdatatech.com">
-        <div class="link-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#4d9fff" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
-        <div><div class="link-card-title">Email</div><div class="link-card-desc">hello@xavierdatatech.com</div></div>
-      </a>
+    <div class="pills">
+      <div class="pill">Power BI</div>
+      <div class="pill">Microsoft Fabric</div>
+      <div class="pill">DAX</div>
+      <div class="pill">CrewAI</div>
+      <div class="pill">LangChain</div>
+      <div class="pill">Anthropic Claude</div>
+      <div class="pill">RAG</div>
+      <div class="pill">Ollama</div>
+      <div class="pill">PySpark</div>
+      <div class="pill">Delta Lake</div>
+      <div class="pill">Databricks</div>
+      <div class="pill">SQL</div>
+      <div class="pill">Python</div>
+      <div class="pill">Azure</div>
+      <div class="pill">AWS</div>
+      <div class="pill">FastAPI</div>
     </div>
   </section>
 
