@@ -4,6 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Xavier Mareca — Data & AI Consultant</title>
+  <meta name="description" content="Xavier Mareca is a Data & AI Consultant helping companies extract real value from their data using Power BI, LangChain, CrewAI, PySpark and Anthropic Claude." />
+  <meta property="og:title" content="Xavier Mareca — Data & AI Consultant" />
+  <meta property="og:description" content="Practical data and AI systems, without the hype. Power BI · CrewAI · LangChain · PySpark · Microsoft Fabric." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://xavierdatatech.com" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Xavier Mareca — Data & AI Consultant" />
+  <meta name="twitter:description" content="Practical data and AI systems, without the hype." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:opsz,wght@9..40,300;400;500;600&display=swap" rel="stylesheet" />
@@ -13,11 +21,13 @@
       --bg: #07080a;
       --bg-card: #0f1014;
       --bg-hover: #16171c;
-      --bg-glass: rgba(7,8,10,0.85);
+      --bg-glass: rgba(7,8,10,0.88);
       --accent: #4d9fff;
-      --accent2: #a78bfa;
       --accent-dim: rgba(77,159,255,0.08);
       --accent-border: rgba(77,159,255,0.22);
+      --accent-green: #34d399;
+      --accent-green-dim: rgba(52,211,153,0.07);
+      --accent-green-border: rgba(52,211,153,0.18);
       --text-primary: #f0ede8;
       --text-secondary: #9a9790;
       --text-muted: #4a4845;
@@ -29,60 +39,37 @@
     }
     html { scroll-behavior: smooth; }
     body {
-      background: var(--bg);
-      color: var(--text-primary);
-      font-family: var(--sans);
-      font-size: 15px;
-      line-height: 1.7;
+      background: var(--bg); color: var(--text-primary);
+      font-family: var(--sans); font-size: 15px; line-height: 1.7;
       overflow-x: hidden;
     }
     body::before {
-      content: '';
-      position: fixed; inset: 0;
+      content: ''; position: fixed; inset: 0;
       background-image:
         linear-gradient(rgba(255,255,255,0.012) 1px, transparent 1px),
         linear-gradient(90deg, rgba(255,255,255,0.012) 1px, transparent 1px);
-      background-size: 48px 48px;
-      pointer-events: none; z-index: 0;
+      background-size: 48px 48px; pointer-events: none; z-index: 0;
     }
     body::after {
-      content: '';
-      position: fixed;
-      top: -20%; left: 50%;
-      transform: translateX(-50%);
-      width: 600px; height: 400px;
-      background: radial-gradient(ellipse, rgba(77,159,255,0.05) 0%, transparent 70%);
+      content: ''; position: fixed; top: -20%; left: 50%;
+      transform: translateX(-50%); width: 700px; height: 500px;
+      background: radial-gradient(ellipse, rgba(77,159,255,0.04) 0%, transparent 70%);
       pointer-events: none; z-index: 0;
     }
-    .wrap {
-      position: relative; z-index: 1;
-      max-width: 860px;
-      margin: 0 auto;
-      padding: 0 2rem;
-    }
+    .wrap { position: relative; z-index: 1; max-width: 860px; margin: 0 auto; padding: 0 2rem; }
 
     /* NAV */
     nav {
       position: sticky; top: 0; z-index: 100;
-      background: var(--bg-glass);
-      backdrop-filter: blur(16px);
-      border-bottom: 1px solid var(--border);
-      padding: 1rem 0;
+      background: var(--bg-glass); backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border); padding: 0.9rem 0;
     }
-    .nav-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; }
     .nav-logo { text-decoration: none; display: flex; align-items: center; }
-    .nav-links {
-      display: flex; gap: 1.75rem; align-items: center;
-    }
+    .nav-links { display: flex; gap: 1.75rem; align-items: center; }
     .nav-links a {
-      font-family: var(--mono); font-size: 11px;
-      letter-spacing: 0.1em; text-transform: uppercase;
-      color: var(--text-muted); text-decoration: none;
-      transition: color 0.15s;
+      font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--text-muted); text-decoration: none; transition: color 0.15s;
     }
     .nav-links a:hover { color: var(--accent); }
 
@@ -90,9 +77,8 @@
     .hero { padding: 5rem 0 3.5rem; }
     .hero-eyebrow {
       display: inline-flex; align-items: center; gap: 0.5rem;
-      font-family: var(--mono); font-size: 11px;
-      color: var(--accent); letter-spacing: 0.15em; text-transform: uppercase;
-      margin-bottom: 1.5rem;
+      font-family: var(--mono); font-size: 11px; color: var(--accent);
+      letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 1.5rem;
       background: var(--accent-dim); border: 1px solid var(--accent-border);
       padding: 0.35rem 0.8rem; border-radius: 100px;
     }
@@ -102,34 +88,33 @@
     }
     @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(0.8)} }
     h1 {
-      font-family: var(--mono);
-      font-size: clamp(2.6rem, 6vw, 4rem);
-      font-weight: 700; line-height: 1.08;
-      letter-spacing: -0.025em; margin-bottom: 0.5rem;
+      font-family: var(--mono); font-size: clamp(2.6rem, 6vw, 4rem);
+      font-weight: 700; line-height: 1.08; letter-spacing: -0.025em; margin-bottom: 0.5rem;
     }
     h1 .name { color: var(--text-primary); }
     h1 .accent { color: var(--accent); }
     .cursor {
-      display: inline-block; width: 3px; height: 0.85em;
-      background: var(--accent); margin-left: 2px;
-      vertical-align: middle; animation: blink 1s step-end infinite;
+      display: inline-block; width: 3px; height: 0.85em; background: var(--accent);
+      margin-left: 2px; vertical-align: middle; animation: blink 1s step-end infinite;
     }
     @keyframes blink { 50%{opacity:0} }
-    .hero-tagline {
-      font-size: 1.05rem; color: var(--text-secondary);
-      margin: 1.25rem 0 0.75rem; max-width: 540px; line-height: 1.8;
+    .hero-role {
+      font-family: var(--mono); font-size: 12px; color: var(--text-muted);
+      letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 1.25rem;
     }
-    .hero-tagline strong { color: var(--text-primary); font-weight: 600; }
+    .hero-tagline {
+      font-size: 1.1rem; color: var(--text-primary); font-weight: 600;
+      margin-bottom: 0.75rem; max-width: 520px; line-height: 1.65;
+    }
     .hero-sub {
-      font-size: 0.95rem; color: var(--text-muted);
-      max-width: 520px; line-height: 1.75; margin-bottom: 2rem;
+      font-size: 0.95rem; color: var(--text-secondary);
+      max-width: 560px; line-height: 1.8; margin-bottom: 2rem;
     }
     .hero-actions { display: flex; gap: 0.75rem; flex-wrap: wrap; }
     .btn {
       display: inline-flex; align-items: center; gap: 0.5rem;
-      font-family: var(--mono); font-size: 12px;
-      letter-spacing: 0.08em; text-transform: uppercase;
-      text-decoration: none; padding: 0.7rem 1.4rem;
+      font-family: var(--mono); font-size: 12px; letter-spacing: 0.08em;
+      text-transform: uppercase; text-decoration: none; padding: 0.7rem 1.4rem;
       border-radius: 6px; transition: all 0.18s; border: 1px solid; cursor: pointer;
     }
     .btn-primary { background: var(--accent); color: #07080a; border-color: var(--accent); font-weight: 700; }
@@ -142,122 +127,124 @@
     section { padding: 3rem 0; border-top: 1px solid var(--border); }
     .section-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.75rem; }
     .section-tag {
-      font-family: var(--mono); font-size: 10px;
-      color: var(--accent); letter-spacing: 0.2em; text-transform: uppercase; opacity: 0.7;
+      font-family: var(--mono); font-size: 10px; color: var(--accent);
+      letter-spacing: 0.2em; text-transform: uppercase; opacity: 0.7; white-space: nowrap;
     }
     .section-line { flex: 1; height: 1px; background: var(--border); }
     h2 {
-      font-family: var(--mono); font-size: 1.35rem; font-weight: 700;
+      font-family: var(--mono); font-size: 1.3rem; font-weight: 700;
       color: var(--text-primary); margin-bottom: 0.4rem; letter-spacing: -0.01em;
     }
-    .section-desc { font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1.75rem; max-width: 480px; }
+    .section-desc { font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1.75rem; }
 
     /* FOCUS */
-    .focus-list { display: flex; flex-direction: column; gap: 0.75rem; }
+    .focus-list { display: flex; flex-direction: column; gap: 0.6rem; }
     .focus-item {
       display: flex; align-items: flex-start; gap: 0.75rem;
       background: var(--bg-card); border: 1px solid var(--border);
-      border-radius: var(--radius); padding: 1rem 1.2rem;
-      transition: all 0.18s;
+      border-radius: var(--radius); padding: 0.85rem 1.2rem; transition: border-color 0.18s, background 0.18s;
     }
     .focus-item:hover { border-color: var(--accent-border); background: var(--bg-hover); }
     .focus-dot {
-      width: 6px; height: 6px; border-radius: 50%;
-      background: var(--accent); flex-shrink: 0; margin-top: 7px; opacity: 0.8;
+      width: 5px; height: 5px; border-radius: 50%; background: var(--accent);
+      flex-shrink: 0; margin-top: 8px; opacity: 0.8;
     }
     .focus-text { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
     .focus-text strong { color: var(--text-primary); font-weight: 600; }
+    .focus-badge {
+      display: inline-block; font-family: var(--mono); font-size: 9px;
+      letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent);
+      background: var(--accent-dim); border: 1px solid var(--accent-border);
+      padding: 0.12rem 0.45rem; border-radius: 100px; margin-left: 0.5rem; vertical-align: middle;
+    }
 
-    /* PROJECTS */
-    .projects-grid { display: flex; flex-direction: column; gap: 1rem; }
+    /* PROJECTS — 2 col grid on desktop */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
     .project-card {
       background: var(--bg-card); border: 1px solid var(--border);
-      border-radius: var(--radius); padding: 1.4rem 1.5rem;
-      transition: all 0.18s;
+      border-radius: var(--radius); padding: 1.3rem 1.4rem;
+      transition: border-color 0.18s, background 0.18s;
+      display: flex; flex-direction: column; gap: 0.6rem;
     }
     .project-card:hover { border-color: var(--accent-border); background: var(--bg-hover); }
-    .project-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; margin-bottom: 0.5rem; }
     .project-title {
-      font-family: var(--mono); font-size: 13px; font-weight: 700;
-      color: var(--text-primary); line-height: 1.4;
+      font-family: var(--mono); font-size: 12px; font-weight: 700;
+      color: var(--text-primary); line-height: 1.45;
     }
-    .project-desc { font-size: 13px; color: var(--text-secondary); line-height: 1.65; margin-bottom: 0.75rem; }
+    .project-desc { font-size: 13px; color: var(--text-secondary); line-height: 1.6; flex: 1; }
     .project-result {
-      font-size: 12px; color: var(--accent3, #34d399);
-      background: rgba(52,211,153,0.07); border: 1px solid rgba(52,211,153,0.18);
-      border-radius: 5px; padding: 0.3rem 0.7rem; display: inline-block;
-      margin-bottom: 0.75rem; font-family: var(--mono);
+      display: inline-block; font-family: var(--mono); font-size: 10px;
+      color: var(--accent-green); background: var(--accent-green-dim);
+      border: 1px solid var(--accent-green-border);
+      border-radius: 5px; padding: 0.2rem 0.6rem;
     }
-    .project-stack { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+    .project-stack { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-top: auto; }
     .stack-tag {
-      font-family: var(--mono); font-size: 10px; letter-spacing: 0.06em;
-      color: var(--text-muted); background: var(--bg);
-      border: 1px solid var(--border); border-radius: 4px;
-      padding: 0.2rem 0.5rem;
+      font-family: var(--mono); font-size: 10px; letter-spacing: 0.05em;
+      color: var(--text-secondary); background: var(--bg-hover);
+      border: 1px solid var(--border-hover); border-radius: 4px; padding: 0.18rem 0.45rem;
     }
 
-    /* TECH STACK */
-    .pills { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+    /* STACK */
+    .stack-groups { display: flex; flex-direction: column; gap: 1.25rem; }
+    .stack-group-label {
+      font-family: var(--mono); font-size: 10px; color: var(--accent);
+      letter-spacing: 0.15em; text-transform: uppercase; opacity: 0.65; margin-bottom: 0.55rem;
+    }
+    .pills { display: flex; flex-wrap: wrap; gap: 0.5rem; }
     .pill {
-      display: flex; align-items: center; gap: 0.5rem;
+      display: flex; align-items: center; gap: 0.45rem;
       background: var(--bg-card); border: 1px solid var(--border);
-      border-radius: 7px; padding: 0.5rem 0.9rem;
-      font-size: 13px; font-weight: 500; color: var(--text-primary);
-      transition: all 0.15s;
+      border-radius: 7px; padding: 0.42rem 0.8rem;
+      font-size: 13px; font-weight: 500; color: var(--text-primary); transition: all 0.15s;
     }
     .pill:hover { border-color: var(--accent-border); background: var(--bg-hover); }
     .pill::before {
-      content: ''; width: 6px; height: 6px; border-radius: 50%;
-      background: var(--accent); flex-shrink: 0; opacity: 0.7;
+      content: ''; width: 5px; height: 5px; border-radius: 50%;
+      background: var(--accent); flex-shrink: 0; opacity: 0.65;
     }
 
     /* CONTACT */
-    .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px,1fr)); gap: 1rem; }
+    .contact-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
     .link-card {
       display: flex; align-items: center; gap: 0.85rem;
       background: var(--bg-card); border: 1px solid var(--border);
-      border-radius: var(--radius); padding: 1.1rem 1.2rem;
+      border-radius: var(--radius); padding: 1rem 1.1rem;
       text-decoration: none; transition: all 0.18s;
     }
     .link-card:hover { border-color: var(--accent-border); background: var(--bg-hover); transform: translateY(-2px); }
     .link-card-icon {
-      width: 36px; height: 36px; border-radius: 8px;
+      width: 34px; height: 34px; border-radius: 8px;
       background: var(--accent-dim); border: 1px solid var(--accent-border);
       display: flex; align-items: center; justify-content: center; flex-shrink: 0;
     }
-    .link-card-icon svg { width: 16px; height: 16px; fill: var(--accent); }
+    .link-card-icon svg { width: 15px; height: 15px; fill: var(--accent); }
     .link-card-title { font-family: var(--mono); font-size: 12px; font-weight: 700; color: var(--text-primary); }
-    .link-card-desc { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
+    .link-card-desc { font-size: 11px; color: var(--text-muted); margin-top: 1px; }
 
     /* FOOTER */
-    footer {
-      border-top: 1px solid var(--border); padding: 2rem 0; margin-top: 1rem;
-    }
-    .footer-inner {
-      display: flex; align-items: center; justify-content: space-between;
-      flex-wrap: wrap; gap: 1rem;
-    }
+    footer { border-top: 1px solid var(--border); padding: 2rem 0; margin-top: 1rem; }
+    .footer-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
     .footer-left { font-family: var(--mono); font-size: 12px; color: var(--text-muted); }
     .footer-left strong { color: var(--text-secondary); }
-    .footer-right {
-      font-family: var(--mono); font-size: 11px; color: var(--text-muted);
-      display: flex; align-items: center; gap: 0.5rem;
-    }
-    .footer-dot {
-      width: 6px; height: 6px; border-radius: 50%;
-      background: #22c55e; animation: pulse 2s ease infinite;
-    }
+    .footer-right { font-family: var(--mono); font-size: 11px; color: var(--text-muted); display: flex; align-items: center; gap: 0.5rem; }
+    .footer-dot { width: 6px; height: 6px; border-radius: 50%; background: #22c55e; animation: pulse 2s ease infinite; }
 
-    @keyframes fadeUp { from{opacity:0;transform:translateY(16px)} to{opacity:1;transform:translateY(0)} }
-    .hero { animation: fadeUp 0.6s ease both; }
-    section { animation: fadeUp 0.5s ease both; }
+    @keyframes fadeUp { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:translateY(0)} }
+    .hero { animation: fadeUp 0.55s ease both; }
+    section { animation: fadeUp 0.45s ease both; }
 
-    @media (max-width: 600px) {
+    @media (max-width: 640px) {
       .wrap { padding: 0 1.25rem; }
       .hero { padding: 3.5rem 0 2.5rem; }
       h1 { font-size: 2.2rem; }
       .nav-links { gap: 1rem; }
-      .contact-grid { grid-template-columns: 1fr 1fr; }
+      .projects-grid { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -266,7 +253,7 @@
 <nav>
   <div class="wrap nav-inner">
     <a class="nav-logo" href="#">
-      <svg width="30" height="28" viewBox="0 0 30 28" fill="none">
+      <svg width="28" height="26" viewBox="0 0 30 28" fill="none">
         <line x1="15" y1="3" x2="27" y2="25" stroke="#4d9fff" stroke-width="2" stroke-linecap="round"/>
         <line x1="15" y1="3" x2="3" y2="25" stroke="#4d9fff" stroke-width="2" stroke-linecap="round"/>
         <line x1="3" y1="25" x2="27" y2="25" stroke="#4d9fff" stroke-width="2" stroke-linecap="round"/>
@@ -289,19 +276,12 @@
 
 <div class="wrap">
 
-  <!-- HERO -->
   <div class="hero">
     <div class="hero-eyebrow">Open to collaborations</div>
-    <h1>
-      <span class="name">Xavier</span><br>
-      <span class="accent">Mareca</span><span class="cursor"></span>
-    </h1>
-    <p class="hero-tagline">
-      <strong>I build practical data and AI systems, without the hype.</strong>
-    </p>
-    <p class="hero-sub">
-      Helping European companies extract real value from their data by combining modern BI, cloud technologies, and local LLMs.
-    </p>
+    <h1><span class="name">Xavier</span><br><span class="accent">Mareca</span><span class="cursor"></span></h1>
+    <p class="hero-role">Data &amp; AI Consultant</p>
+    <p class="hero-tagline">I build practical data and AI systems, without the hype.</p>
+    <p class="hero-sub">Helping companies extract real value from their data by combining modern BI (Power BI + Fabric), robust data pipelines (PySpark + Databricks), and intelligent multi-agent applications with CrewAI, LangChain and Claude.</p>
     <div class="hero-actions">
       <a class="btn btn-primary" href="https://www.linkedin.com/in/xavier-mareca-247344148/?locale=en" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
@@ -318,133 +298,86 @@
     </div>
   </div>
 
-  <!-- CURRENT FOCUS -->
   <section id="focus">
-    <div class="section-header">
-      <span class="section-tag">Currently</span>
-      <div class="section-line"></div>
-    </div>
+    <div class="section-header"><span class="section-tag">Currently</span><div class="section-line"></div></div>
     <h2>Current focus</h2>
     <p class="section-desc">What I'm building and delivering right now.</p>
     <div class="focus-list">
-      <div class="focus-item">
-        <div class="focus-dot"></div>
-        <p class="focus-text">Local autonomous AI agents using <strong>LangChain + Ollama + Llama 3.1 / DeepSeek</strong></p>
-      </div>
-      <div class="focus-item">
-        <div class="focus-dot"></div>
-        <p class="focus-text">Full migrations to <strong>Microsoft Fabric</strong> — Lakehouse, Data Warehouse &amp; Real-time Intelligence</p>
-      </div>
-      <div class="focus-item">
-        <div class="focus-dot"></div>
-        <p class="focus-text">Advanced <strong>RAG systems</strong> for European companies</p>
-      </div>
-      <div class="focus-item">
-        <div class="focus-dot"></div>
-        <p class="focus-text">Large-scale pipeline optimization with <strong>PySpark + Delta Lake</strong> on Databricks</p>
-      </div>
+      <div class="focus-item"><div class="focus-dot"></div><p class="focus-text">Multi-agent systems with <strong>CrewAI + LangChain + Anthropic Claude</strong></p></div>
+      <div class="focus-item"><div class="focus-dot"></div><p class="focus-text"><strong>RAG systems</strong> and AI assistants for business data</p></div>
+      <div class="focus-item"><div class="focus-dot"></div><p class="focus-text">Modern BI solutions with <strong>Power BI</strong> and <strong>Microsoft Fabric</strong></p></div>
+      <div class="focus-item"><div class="focus-dot"></div><p class="focus-text">Large-scale pipelines with <strong>PySpark + Delta Lake</strong> on Databricks</p></div>
+      <div class="focus-item"><div class="focus-dot"></div><p class="focus-text"><strong>Microsoft Fabric</strong> — Lakehouse, Data Warehouse &amp; Real-time Intelligence <span class="focus-badge">DP-700</span></p></div>
+      <div class="focus-item"><div class="focus-dot"></div><p class="focus-text"><strong>AWS Machine Learning Engineer</strong> training <span class="focus-badge">In progress</span></p></div>
     </div>
   </section>
 
-  <!-- PROJECTS -->
   <section id="projects">
-    <div class="section-header">
-      <span class="section-tag">Work</span>
-      <div class="section-line"></div>
-    </div>
+    <div class="section-header"><span class="section-tag">Work</span><div class="section-line"></div></div>
     <h2>Selected projects</h2>
     <p class="section-desc">Real deliverables, real results.</p>
     <div class="projects-grid">
-
       <div class="project-card">
-        <div class="project-header">
-          <p class="project-title">Microsoft Fabric Migration — Manufacturing (EU)</p>
-        </div>
-        <p class="project-desc">Complete migration from hybrid environments (Power BI + Synapse) to Microsoft Fabric.</p>
-        <span class="project-result">−45% processing time · significant cost reduction</span>
+        <p class="project-title">AI-Powered BI Assistant</p>
+        <p class="project-desc">Natural language querying over structured data. Business users get insights by asking questions in plain English.</p>
         <div class="project-stack">
-          <span class="stack-tag">Microsoft Fabric</span>
-          <span class="stack-tag">Power BI</span>
-          <span class="stack-tag">SQL</span>
-          <span class="stack-tag">Azure</span>
+          <span class="stack-tag">LangChain</span><span class="stack-tag">RAG</span><span class="stack-tag">Claude</span><span class="stack-tag">FastAPI</span><span class="stack-tag">PostgreSQL</span>
         </div>
       </div>
-
       <div class="project-card">
-        <div class="project-header">
-          <p class="project-title">RAG System for Analysts — International Consulting Firm</p>
-        </div>
-        <p class="project-desc">Intelligent Q&amp;A platform over internal documentation and data using local models.</p>
-        <span class="project-result">+60% accurate automatic responses · major reduction in research time</span>
+        <p class="project-title">Multi-Agent Automation System</p>
+        <p class="project-desc">CrewAI-based workflow for automated data extraction, transformation, and reporting.</p>
         <div class="project-stack">
-          <span class="stack-tag">LangChain</span>
-          <span class="stack-tag">Ollama</span>
-          <span class="stack-tag">Llama 3.1</span>
-          <span class="stack-tag">FastAPI</span>
-          <span class="stack-tag">PostgreSQL</span>
+          <span class="stack-tag">CrewAI</span><span class="stack-tag">LangChain</span><span class="stack-tag">Python</span><span class="stack-tag">FastAPI</span>
         </div>
       </div>
-
       <div class="project-card">
-        <div class="project-header">
-          <p class="project-title">Executive BI Platform + Reporting Automation</p>
-        </div>
-        <p class="project-desc">Real-time executive dashboard with automated data pipelines.</p>
-        <span class="project-result">15–20 hours saved per week for the leadership team</span>
+        <p class="project-title">Executive BI Platform</p>
+        <p class="project-desc">Real-time executive dashboards with automated data pipelines.</p>
+        <span class="project-result">15–20 hours saved per week</span>
         <div class="project-stack">
-          <span class="stack-tag">Power BI</span>
-          <span class="stack-tag">Python</span>
-          <span class="stack-tag">Databricks</span>
-          <span class="stack-tag">PySpark</span>
+          <span class="stack-tag">Power BI</span><span class="stack-tag">Python</span><span class="stack-tag">Databricks</span><span class="stack-tag">PySpark</span>
         </div>
       </div>
-
       <div class="project-card">
-        <div class="project-header">
-          <p class="project-title">Internal Data Support AI Agent</p>
-        </div>
+        <p class="project-title">Internal Data Support Agent</p>
         <p class="project-desc">Conversational agent that answers complex queries about corporate data.</p>
         <div class="project-stack">
-          <span class="stack-tag">LangChain</span>
-          <span class="stack-tag">Ollama</span>
-          <span class="stack-tag">FastAPI</span>
-          <span class="stack-tag">Azure</span>
+          <span class="stack-tag">LangChain</span><span class="stack-tag">CrewAI</span><span class="stack-tag">FastAPI</span><span class="stack-tag">Azure</span>
         </div>
       </div>
-
+      <div class="project-card">
+        <p class="project-title">Data Pipeline Optimization</p>
+        <p class="project-desc">Efficient large-scale data processing pipelines on Databricks.</p>
+        <div class="project-stack">
+          <span class="stack-tag">PySpark</span><span class="stack-tag">Delta Lake</span><span class="stack-tag">Databricks</span><span class="stack-tag">SQL</span>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- STACK -->
   <section id="stack">
-    <div class="section-header">
-      <span class="section-tag">Skills</span>
-      <div class="section-line"></div>
-    </div>
+    <div class="section-header"><span class="section-tag">Skills</span><div class="section-line"></div></div>
     <h2>Tech stack</h2>
     <p class="section-desc">Tools I use to build BI systems and AI applications.</p>
-    <div class="pills">
-      <div class="pill">Power BI</div>
-      <div class="pill">Microsoft Fabric</div>
-      <div class="pill">SQL</div>
-      <div class="pill">Databricks</div>
-      <div class="pill">Python</div>
-      <div class="pill">LangChain</div>
-      <div class="pill">Ollama</div>
-      <div class="pill">FastAPI</div>
-      <div class="pill">RAG / LLMs</div>
-      <div class="pill">AWS</div>
-      <div class="pill">Azure</div>
-      <div class="pill">PySpark</div>
+    <div class="stack-groups">
+      <div><p class="stack-group-label">BI &amp; Visualization</p>
+        <div class="pills"><div class="pill">Power BI</div><div class="pill">Microsoft Fabric</div><div class="pill">DAX</div></div>
+      </div>
+      <div><p class="stack-group-label">AI &amp; Agents</p>
+        <div class="pills"><div class="pill">CrewAI</div><div class="pill">LangChain</div><div class="pill">Anthropic Claude</div><div class="pill">RAG</div><div class="pill">Ollama</div></div>
+      </div>
+      <div><p class="stack-group-label">Data Engineering</p>
+        <div class="pills"><div class="pill">PySpark</div><div class="pill">Delta Lake</div><div class="pill">SQL</div><div class="pill">Databricks</div><div class="pill">Python</div></div>
+      </div>
+      <div><p class="stack-group-label">Platforms &amp; Cloud</p>
+        <div class="pills"><div class="pill">Azure</div><div class="pill">AWS</div><div class="pill">FastAPI</div></div>
+      </div>
     </div>
   </section>
 
-  <!-- CONTACT -->
   <section id="contact">
-    <div class="section-header">
-      <span class="section-tag">Contact</span>
-      <div class="section-line"></div>
-    </div>
+    <div class="section-header"><span class="section-tag">Contact</span><div class="section-line"></div></div>
     <h2>Get in touch</h2>
     <p class="section-desc">Let's talk about your data challenges.</p>
     <div class="contact-grid">
