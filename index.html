@@ -78,7 +78,6 @@
     .reveal-delay-2 { transition-delay: 0.2s; }
     .reveal-delay-3 { transition-delay: 0.3s; }
 
-    /* NAV */
     nav {
       position: sticky; top: 0; z-index: 100;
       background: var(--bg-glass); backdrop-filter: blur(20px);
@@ -114,7 +113,6 @@
     .nav-links a.active { color: var(--accent); }
     .nav-links a.active::after { width: 100%; }
 
-    /* HERO */
     .hero { padding: 5.5rem 0 4rem; }
     h1 {
       font-family: var(--mono); font-size: clamp(3rem, 6.5vw, 4.5rem);
@@ -149,7 +147,6 @@
     .btn-ghost:hover { border-color: var(--accent-border); color: var(--accent); transform: translateY(-1px); }
     .btn svg { width: 14px; height: 14px; }
 
-    /* METRICS */
     .metrics-grid {
       display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem;
       margin-top: 2rem; padding-top: 2rem; border-top: 1px solid var(--border);
@@ -172,7 +169,6 @@
       letter-spacing: 0.12em; text-transform: uppercase;
     }
 
-    /* SECTIONS */
     section { padding: 3.5rem 0; border-top: 1px solid var(--border); }
     .section-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 2rem; }
     .section-tag {
@@ -185,7 +181,6 @@
       color: var(--text-primary); letter-spacing: -0.01em;
     }
 
-    /* FOCUS */
     .focus-timeline { position: relative; margin-top: 1.5rem; padding-left: 2rem; }
     .focus-timeline::before {
       content: ''; position: absolute; left: 5px; top: 8px; bottom: 8px;
@@ -216,7 +211,6 @@
     }
     .focus-badge.completed { color: var(--accent-green); background: var(--accent-green-dim); border-color: var(--accent-green-border); }
 
-    /* PROJECTS */
     .projects-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.85rem; margin-top: 1.5rem; }
     .project-card {
       background: var(--bg-card); border: 1px solid var(--border);
@@ -265,7 +259,6 @@
       background: var(--accent-dim); padding: 0.1rem 0.35rem; border-radius: 3px;
     }
 
-    /* STACK */
     .stack-category { margin-bottom: 1.5rem; }
     .stack-category-header { display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.75rem; }
     .stack-category-icon { width: 20px; height: 20px; border-radius: 4px; display: flex; align-items: center; justify-content: center; }
@@ -289,45 +282,6 @@
     .pill-cloud::before { background: #fb923c; }
     .pill-cloud:hover { border-color: rgba(251,146,60,0.35); }
 
-    /* AI DEMO */
-    .ai-demo-container {
-      margin-top: 1.5rem; background: var(--bg-card);
-      border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden;
-    }
-    .ai-demo-header {
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 0.75rem 1rem; background: var(--bg-hover); border-bottom: 1px solid var(--border);
-    }
-    .ai-demo-title {
-      font-family: var(--mono); font-size: 11px; color: var(--text-muted);
-      letter-spacing: 0.1em; text-transform: uppercase; display: flex; align-items: center; gap: 0.5rem;
-    }
-    .ai-demo-dots { display: flex; gap: 6px; }
-    .ai-demo-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--text-muted); opacity: 0.3; }
-    .ai-demo-dot.active { background: var(--accent-green); opacity: 1; }
-    .ai-demo-body {
-      padding: 1rem; min-height: 180px; max-height: 300px; overflow-y: auto;
-      font-family: var(--mono); font-size: 13px; line-height: 1.7;
-    }
-    .ai-demo-message { margin-bottom: 0.75rem; animation: fadeIn 0.3s ease; }
-    @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
-    .ai-demo-message.user { color: var(--text-secondary); }
-    .ai-demo-message.assistant { color: var(--accent); }
-    .ai-demo-message .label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 0.25rem; display: block; opacity: 0.6; }
-    .ai-demo-input-row { display: flex; border-top: 1px solid var(--border); }
-    .ai-demo-input {
-      flex: 1; background: transparent; border: none; padding: 0.85rem 1rem;
-      font-family: var(--mono); font-size: 13px; color: var(--text-primary); outline: none;
-    }
-    .ai-demo-input::placeholder { color: var(--text-muted); }
-    .ai-demo-send {
-      background: var(--accent); border: none; padding: 0 1.25rem;
-      color: #07080a; cursor: pointer; font-family: var(--mono);
-      font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; transition: all 0.15s;
-    }
-    .ai-demo-send:hover { background: #3d8fee; }
-
-    /* CONTACT FORM */
     .contact-form {
       margin-top: 1.5rem; background: var(--bg-card);
       border: 1px solid var(--border); border-radius: var(--radius); padding: 1.5rem;
@@ -355,8 +309,13 @@
     .form-submit:hover { background: #3d8fee; transform: translateY(-1px); }
     .form-status { margin-top: 0.75rem; font-family: var(--mono); font-size: 12px; text-align: center; display: none; }
     .form-status.success { display: block; color: var(--accent-green); }
+    .form-hint {
+      margin-top: 0.75rem; text-align: center;
+      font-family: var(--mono); font-size: 11px; color: var(--text-muted);
+    }
+    .form-hint a { color: var(--accent); text-decoration: none; }
+    .form-hint a:hover { text-decoration: underline; }
 
-    /* FOOTER */
     footer { border-top: 1px solid var(--border); padding: 2rem 0; margin-top: 1rem; }
     .footer-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
     .footer-left { font-family: var(--mono); font-size: 12px; color: var(--text-muted); }
@@ -365,7 +324,6 @@
     .footer-dot { width: 6px; height: 6px; border-radius: 50%; background: #22c55e; animation: pulse 2s ease infinite; }
     @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(0.8)} }
 
-    /* BACK TO TOP */
     .back-to-top {
       position: fixed; bottom: 2rem; right: 2rem; z-index: 99;
       width: 40px; height: 40px; border-radius: 8px;
@@ -385,51 +343,22 @@
     @keyframes fadeUp { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:translateY(0)} }
     .hero { animation: fadeUp 0.55s ease both; }
 
-    /* LOGO ANIMATIONS */
-    @keyframes xStroke {
-      from { stroke-dashoffset: 32; }
-      to { stroke-dashoffset: 0; }
-    }
-    @keyframes nodeIn {
-      from { opacity: 0; transform: scale(0.3); }
-      to { opacity: 1; transform: scale(1); }
-    }
-    @keyframes ringIn {
-      from { opacity: 0; transform: scale(0.6); }
-      to { opacity: 1; transform: scale(1); }
-    }
-    @keyframes glowIn {
-      from { opacity: 0; }
-      to { opacity: 0.12; }
-    }
-    .x-line {
-      stroke-dasharray: 32;
-      stroke-dashoffset: 32;
-      animation: xStroke 0.6s ease forwards;
-    }
+    @keyframes xStroke { from { stroke-dashoffset: 32; } to { stroke-dashoffset: 0; } }
+    @keyframes nodeIn { from { opacity: 0; transform: scale(0.3); } to { opacity: 1; transform: scale(1); } }
+    @keyframes ringIn { from { opacity: 0; transform: scale(0.6); } to { opacity: 1; transform: scale(1); } }
+    @keyframes glowIn { from { opacity: 0; } to { opacity: 0.12; } }
+    .x-line { stroke-dasharray: 32; stroke-dashoffset: 32; animation: xStroke 0.6s ease forwards; }
     .x-line-2 { animation-delay: 0.1s; }
-    .x-node {
-      opacity: 0;
-      transform-origin: center;
-      animation: nodeIn 0.3s ease forwards;
-    }
+    .x-node { opacity: 0; transform-origin: center; animation: nodeIn 0.3s ease forwards; }
     .x-node-d1 { animation-delay: 0.4s; }
     .x-node-d2 { animation-delay: 0.5s; }
     .x-node-d3 { animation-delay: 0.6s; }
     .x-node-d4 { animation-delay: 0.7s; }
     .x-node-c { animation-delay: 0.8s; }
-    .x-ring {
-      opacity: 0;
-      transform-origin: center;
-      animation: ringIn 0.4s ease forwards;
-    }
+    .x-ring { opacity: 0; transform-origin: center; animation: ringIn 0.4s ease forwards; }
     .x-ring-1 { animation-delay: 0.9s; }
     .x-ring-2 { animation-delay: 1.05s; }
-    .x-glow {
-      opacity: 0;
-      animation: glowIn 0.5s ease forwards;
-      animation-delay: 1.1s;
-    }
+    .x-glow { opacity: 0; animation: glowIn 0.5s ease forwards; animation-delay: 1.1s; }
 
     @media (max-width: 768px) {
       .wrap { padding: 0 1.25rem; }
@@ -455,43 +384,18 @@
   <div class="wrap nav-inner">
     <div class="nav-logo-wrap">
       <a class="nav-logo" href="#" aria-label="Home">
-        <svg id="logoSvg" width="32" height="32" viewBox="0 0 32 32" fill="none">
-          <!-- X strokes -->
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
           <line class="x-line" x1="5" y1="5" x2="27" y2="27" stroke="#4d9fff" stroke-width="1.8" stroke-linecap="round"/>
           <line class="x-line x-line-2" x1="27" y1="5" x2="5" y2="27" stroke="#4d9fff" stroke-width="1.8" stroke-linecap="round"/>
-          <!-- Corner nodes -->
-          <g class="x-node x-node-d1">
-            <circle cx="5" cy="5" r="2.3" fill="#07080a" stroke="#4d9fff" stroke-width="1.1"/>
-            <circle cx="5" cy="5" r="0.9" fill="#4d9fff"/>
-          </g>
-          <g class="x-node x-node-d2">
-            <circle cx="27" cy="5" r="2.3" fill="#07080a" stroke="#4d9fff" stroke-width="1.1"/>
-            <circle cx="27" cy="5" r="0.9" fill="#4d9fff"/>
-          </g>
-          <g class="x-node x-node-d3">
-            <circle cx="5" cy="27" r="2.3" fill="#07080a" stroke="#4d9fff" stroke-width="1.1"/>
-            <circle cx="5" cy="27" r="0.9" fill="#4d9fff"/>
-          </g>
-          <g class="x-node x-node-d4">
-            <circle cx="27" cy="27" r="2.3" fill="#07080a" stroke="#4d9fff" stroke-width="1.1"/>
-            <circle cx="27" cy="27" r="0.9" fill="#4d9fff"/>
-          </g>
-          <!-- Pulse rings -->
+          <g class="x-node x-node-d1"><circle cx="5" cy="5" r="2.3" fill="#07080a" stroke="#4d9fff" stroke-width="1.1"/><circle cx="5" cy="5" r="0.9" fill="#4d9fff"/></g>
+          <g class="x-node x-node-d2"><circle cx="27" cy="5" r="2.3" fill="#07080a" stroke="#4d9fff" stroke-width="1.1"/><circle cx="27" cy="5" r="0.9" fill="#4d9fff"/></g>
+          <g class="x-node x-node-d3"><circle cx="5" cy="27" r="2.3" fill="#07080a" stroke="#4d9fff" stroke-width="1.1"/><circle cx="5" cy="27" r="0.9" fill="#4d9fff"/></g>
+          <g class="x-node x-node-d4"><circle cx="27" cy="27" r="2.3" fill="#07080a" stroke="#4d9fff" stroke-width="1.1"/><circle cx="27" cy="27" r="0.9" fill="#4d9fff"/></g>
           <circle class="x-ring x-ring-1" cx="16" cy="16" r="5.5" fill="none" stroke="#4d9fff" stroke-width="0.6" opacity="0.3"/>
           <circle class="x-ring x-ring-2" cx="16" cy="16" r="8" fill="none" stroke="#4d9fff" stroke-width="0.4" opacity="0.12"/>
-          <!-- Center hub -->
-          <g class="x-node x-node-c">
-            <circle cx="16" cy="16" r="2.8" fill="#07080a" stroke="#4d9fff" stroke-width="1.2"/>
-            <circle cx="16" cy="16" r="1.1" fill="#4d9fff"/>
-          </g>
-          <!-- Center glow -->
+          <g class="x-node x-node-c"><circle cx="16" cy="16" r="2.8" fill="#07080a" stroke="#4d9fff" stroke-width="1.2"/><circle cx="16" cy="16" r="1.1" fill="#4d9fff"/></g>
           <circle class="x-glow" cx="16" cy="16" r="7" fill="url(#logoGlow)"/>
-          <defs>
-            <radialGradient id="logoGlow">
-              <stop stop-color="#4d9fff" stop-opacity="0.5"/>
-              <stop offset="1" stop-color="#4d9fff" stop-opacity="0"/>
-            </radialGradient>
-          </defs>
+          <defs><radialGradient id="logoGlow"><stop stop-color="#4d9fff" stop-opacity="0.5"/><stop offset="1" stop-color="#4d9fff" stop-opacity="0"/></radialGradient></defs>
         </svg>
       </a>
       <div class="logo-dl" onclick="downloadLogoPNG()" title="Download logo as PNG">
@@ -501,7 +405,6 @@
     <div class="nav-links">
       <a href="#focus">Focus</a>
       <a href="#projects">Projects</a>
-      <a href="#demo">Demo</a>
       <a href="#stack">Stack</a>
       <a href="#contact">Contact</a>
     </div>
@@ -670,31 +573,6 @@
     </div>
   </section>
 
-  <section id="demo">
-    <div class="section-header"><span class="section-tag">Interactive</span><div class="section-line"></div></div>
-    <h2 class="reveal">AI Demo</h2>
-    <p class="reveal reveal-delay-1" style="font-size:14px;color:var(--text-muted);margin-bottom:0;">Try a simulated conversation. Type a question about data, BI, or AI.</p>
-    <div class="ai-demo-container reveal reveal-delay-2">
-      <div class="ai-demo-header">
-        <div class="ai-demo-title">
-          <div class="ai-demo-dots"><div class="ai-demo-dot active"></div><div class="ai-demo-dot"></div><div class="ai-demo-dot"></div></div>
-          claude-3.5-sonnet
-        </div>
-        <span style="font-family:var(--mono);font-size:10px;color:var(--text-muted);letter-spacing:0.1em;">SIMULATED</span>
-      </div>
-      <div class="ai-demo-body" id="chatBody">
-        <div class="ai-demo-message assistant">
-          <span class="label">Assistant</span>
-          Hello! I'm a simulated Claude assistant. Ask me about Power BI, RAG systems, data pipelines, or anything data/AI related.
-        </div>
-      </div>
-      <div class="ai-demo-input-row">
-        <input type="text" class="ai-demo-input" id="chatInput" placeholder="Ask about data, BI, AI..." autocomplete="off" />
-        <button class="ai-demo-send" onclick="sendMessage()">Send</button>
-      </div>
-    </div>
-  </section>
-
   <section id="stack">
     <div class="section-header"><div class="section-line"></div></div>
     <h2 class="reveal">Tech stack</h2>
@@ -768,6 +646,7 @@
         <div class="form-group" style="margin-bottom:0.75rem;"><label class="form-label" for="message">Message</label><textarea id="message" class="form-textarea" required placeholder="Tell me about your project or challenge..."></textarea></div>
         <button type="submit" class="form-submit">Send Message</button>
         <div id="formStatus" class="form-status"></div>
+        <p class="form-hint">Prefer email? <a href="mailto:hello@xavierdatatech.com">hello@xavierdatatech.com</a></p>
       </form>
     </div>
   </section>
@@ -786,23 +665,17 @@
 </button>
 
 <script>
-/* PNG LOGO EXPORT */
 function downloadLogoPNG() {
   const svgString = `<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 32 32" fill="none">
     <line x1="5" y1="5" x2="27" y2="27" stroke="#4d9fff" stroke-width="1.8" stroke-linecap="round"/>
     <line x1="27" y1="5" x2="5" y2="27" stroke="#4d9fff" stroke-width="1.8" stroke-linecap="round"/>
-    <circle cx="5" cy="5" r="2.3" fill="none" stroke="#4d9fff" stroke-width="1.1"/>
-    <circle cx="5" cy="5" r="0.9" fill="#4d9fff"/>
-    <circle cx="27" cy="5" r="2.3" fill="none" stroke="#4d9fff" stroke-width="1.1"/>
-    <circle cx="27" cy="5" r="0.9" fill="#4d9fff"/>
-    <circle cx="5" cy="27" r="2.3" fill="none" stroke="#4d9fff" stroke-width="1.1"/>
-    <circle cx="5" cy="27" r="0.9" fill="#4d9fff"/>
-    <circle cx="27" cy="27" r="2.3" fill="none" stroke="#4d9fff" stroke-width="1.1"/>
-    <circle cx="27" cy="27" r="0.9" fill="#4d9fff"/>
+    <circle cx="5" cy="5" r="2.3" fill="none" stroke="#4d9fff" stroke-width="1.1"/><circle cx="5" cy="5" r="0.9" fill="#4d9fff"/>
+    <circle cx="27" cy="5" r="2.3" fill="none" stroke="#4d9fff" stroke-width="1.1"/><circle cx="27" cy="5" r="0.9" fill="#4d9fff"/>
+    <circle cx="5" cy="27" r="2.3" fill="none" stroke="#4d9fff" stroke-width="1.1"/><circle cx="5" cy="27" r="0.9" fill="#4d9fff"/>
+    <circle cx="27" cy="27" r="2.3" fill="none" stroke="#4d9fff" stroke-width="1.1"/><circle cx="27" cy="27" r="0.9" fill="#4d9fff"/>
     <circle cx="16" cy="16" r="5.5" fill="none" stroke="#4d9fff" stroke-width="0.6" opacity="0.3"/>
     <circle cx="16" cy="16" r="8" fill="none" stroke="#4d9fff" stroke-width="0.4" opacity="0.12"/>
-    <circle cx="16" cy="16" r="2.8" fill="none" stroke="#4d9fff" stroke-width="1.2"/>
-    <circle cx="16" cy="16" r="1.1" fill="#4d9fff"/>
+    <circle cx="16" cy="16" r="2.8" fill="none" stroke="#4d9fff" stroke-width="1.2"/><circle cx="16" cy="16" r="1.1" fill="#4d9fff"/>
     <circle cx="16" cy="16" r="7" fill="url(#g)" opacity="0.12"/>
     <defs><radialGradient id="g"><stop stop-color="#4d9fff" stop-opacity="0.5"/><stop offset="1" stop-color="#4d9fff" stop-opacity="0"/></radialGradient></defs>
   </svg>`;
@@ -820,13 +693,11 @@ function downloadLogoPNG() {
   img.src = 'data:image/svg+xml;base64,' + btoa(unescape(encodeURIComponent(svgString)));
 }
 
-/* SCROLL REVEAL */
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
 }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-/* COUNTERS */
 function animateCounters() {
   document.querySelectorAll('[data-count]').forEach(counter => {
     const target = parseInt(counter.dataset.count);
@@ -846,49 +717,8 @@ const metricsObs = new IntersectionObserver((entries) => {
 const mg = document.querySelector('.metrics-grid');
 if (mg) metricsObs.observe(mg);
 
-/* PROJECT TOGGLE */
 function toggleProject(card) { card.classList.toggle('expanded'); }
 
-/* CHAT */
-const chatResponses = {
-  'power bi': "Power BI is excellent for enterprise reporting. I typically use it with DirectQuery for large datasets and incremental refresh for better performance. DAX optimization is crucial — avoiding CALCULATE overuse and using variables for complex logic.",
-  'rag': "RAG (Retrieval-Augmented Generation) is my go-to pattern for building AI over proprietary data. I use ChromaDB or Pinecone for vector storage, Claude for generation, and implement hybrid search (semantic + keyword) for better recall.",
-  'langchain': "LangChain provides great abstractions for building LLM applications. I use it for chain composition, memory management, and tool integration. For production, I prefer keeping chains simple and adding custom logging. CrewAI is better for multi-agent workflows.",
-  'pyspark': "PySpark is essential for processing large datasets. I use Delta Lake for ACID transactions and time travel. Key optimizations: partition pruning, broadcast joins for small tables, and caching intermediate results.",
-  'claude': "Claude 3.5 Sonnet is my preferred model for most tasks — great at following instructions and complex reasoning. Haiku is perfect for classification and simple extraction. I use structured outputs for reliable JSON responses.",
-  'aws': "For AWS ML workloads, I use SageMaker for training, Lambda for inference endpoints, and Step Functions for orchestration. S3 + Glue for data lakes. The key is proper IAM roles and cost monitoring.",
-  'azure': "Azure has great integration with Microsoft tools. I use Azure Data Factory for ETL, Azure Synapse for analytics, and Azure OpenAI for LLM services. Microsoft Fabric is maturing quickly.",
-  'agent': "Multi-agent systems are powerful for complex workflows. CrewAI is great for role-based agent collaboration. Key patterns: supervisor agent, sequential execution, and shared memory.",
-  'data pipeline': "A good data pipeline needs: validation (Great Expectations), idempotency, proper error handling, and monitoring. I use Airflow or Step Functions for orchestration, Delta Lake for storage.",
-  'default': "That's an interesting question! While this is a simulated demo, in a real implementation I'd use RAG with your specific documentation to provide accurate, contextual answers. Want to discuss a specific use case?"
-};
-function getResponse(msg) {
-  const l = msg.toLowerCase();
-  for (const [k, v] of Object.entries(chatResponses)) { if (k !== 'default' && l.includes(k)) return v; }
-  return chatResponses.default;
-}
-function sendMessage() {
-  const input = document.getElementById('chatInput');
-  const msg = input.value.trim();
-  if (!msg) return;
-  const body = document.getElementById('chatBody');
-  const userDiv = document.createElement('div');
-  userDiv.className = 'ai-demo-message user';
-  userDiv.innerHTML = '<span class="label">You</span>' + msg;
-  body.appendChild(userDiv);
-  input.value = '';
-  setTimeout(() => {
-    const aDiv = document.createElement('div');
-    aDiv.className = 'ai-demo-message assistant';
-    aDiv.innerHTML = '<span class="label">Assistant</span>' + getResponse(msg);
-    body.appendChild(aDiv);
-    body.scrollTop = body.scrollHeight;
-  }, 600 + Math.random() * 800);
-  body.scrollTop = body.scrollHeight;
-}
-document.getElementById('chatInput').addEventListener('keypress', (e) => { if (e.key === 'Enter') sendMessage(); });
-
-/* FORM */
 function handleSubmit(e) {
   e.preventDefault();
   const btn = e.target.querySelector('.form-submit');
@@ -902,11 +732,9 @@ function handleSubmit(e) {
   }, 1500);
 }
 
-/* BACK TO TOP */
 const btt = document.getElementById('backToTop');
 window.addEventListener('scroll', () => { btt.classList.toggle('visible', window.scrollY > 500); });
 
-/* ACTIVE NAV */
 const sections = document.querySelectorAll('section[id]');
 const navLinks = document.querySelectorAll('.nav-links a');
 window.addEventListener('scroll', () => {
