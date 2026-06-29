@@ -3,380 +3,1013 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Xavier Mareca — BI & AI Developer</title>
+  <title>Xavier Mareca — Data & AI Consultant</title>
+  <meta name="description" content="Xavier Mareca — Data & AI Consultant. Power BI, CrewAI, LangChain, PySpark, Anthropic Claude." />
+  <meta property="og:title" content="Xavier Mareca — Data & AI Consultant" />
+  <meta property="og:description" content="Practical data and AI systems, without the hype." />
+  <meta property="og:url" content="https://xavierdatatech.com" />
+  <meta property="og:type" content="website" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/200/svg' viewBox='0 0 32 32'%3E%3Cline x1='5' y1='5' x2='27' y2='27' stroke='%234d9fff' stroke-width='1.8' stroke-linecap='round'/%3E%3Cline x1='27' y1='5' x2='5' y2='27' stroke='%234d9fff' stroke-width='1.8' stroke-linecap='round'/%3E%3Ccircle cx='16' cy='16' r='5.5' fill='none' stroke='%234d9fff' stroke-width='.6' opacity='.3'/%3E%3Ccircle cx='16' cy='16' r='8' fill='none' stroke='%234d9fff' stroke-width='.4' opacity='.12'/%3E%3Ccircle cx='16' cy='16' r='2.8' fill='%2307080a' stroke='%234d9fff' stroke-width='1.2'/%3E%3Ccircle cx='16' cy='16' r='1.1' fill='%234d9fff'/%3E%3C/svg%3E" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "Xavier Mareca — Data & AI Consultant",
+    "description": "Practical data and AI systems for European companies",
+    "url": "https://xavierdatatech.com",
+    "areaServed": "EU",
+    "knowsAbout": ["Power BI", "LangChain", "CrewAI", "PySpark", "Anthropic Claude", "AWS", "Azure"]
+  }
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:opsz,wght@9..40,300;400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:opsz,wght@9..40,400;500;600;700&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --bg: #080809;
-      --bg-card: #131316;
-      --bg-hover: #1c1c22;
+      --bg: #0a0b0e;
+      --bg-card: #111318;
+      --bg-card-hover: #181b22;
+      --bg-glass: rgba(10,11,14,0.92);
       --accent: #4d9fff;
-      --accent-dim: rgba(77,159,255,0.1);
-      --accent-border: rgba(77,159,255,0.3);
-      --text-primary: #f5f3ef;
-      --text-secondary: #b0ada8;
-      --text-muted: #5a5855;
-      --border: rgba(255,255,255,0.08);
-      --border-hover: rgba(255,255,255,0.14);
+      --accent-dim: rgba(77,159,255,0.06);
+      --accent-border: rgba(77,159,255,0.18);
+      --accent-green: #34d399;
+      --accent-green-dim: rgba(52,211,153,0.06);
+      --accent-green-border: rgba(52,211,153,0.18);
+      --accent-purple: #a78bfa;
+      --accent-purple-dim: rgba(167,139,250,0.06);
+      --accent-purple-border: rgba(167,139,250,0.18);
+      --accent-orange: #fb923c;
+      --accent-orange-dim: rgba(251,146,60,0.06);
+      --accent-orange-border: rgba(251,146,60,0.18);
+      --text-primary: #eaedf5;
+      --text-secondary: #8b8e96;
+      --text-muted: #4e5159;
+      --border: rgba(255,255,255,0.06);
+      --border-hover: rgba(255,255,255,0.1);
       --mono: 'Space Mono', monospace;
       --sans: 'DM Sans', sans-serif;
+      --radius: 8px;
     }
-    html, body { height: 100%; }
+    html { scroll-behavior: smooth; }
     body {
-      background: var(--bg);
-      color: var(--text-primary);
-      font-family: var(--sans);
-      font-size: 17px;
-      line-height: 1.7;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
+      background: var(--bg); color: var(--text-primary);
+      font-family: var(--sans); font-size: 15px; line-height: 1.6;
+      overflow-x: hidden;
     }
     body::before {
-      content: '';
-      position: fixed; inset: 0;
+      content: ''; position: fixed; inset: 0;
       background-image:
-        linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
-      background-size: 48px 48px;
+        linear-gradient(rgba(255,255,255,0.01) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.01) 1px, transparent 1px);
+      background-size: 48px 48px; pointer-events: none; z-index: 0;
+    }
+    body::after {
+      content: ''; position: fixed; top: -20%; left: 50%;
+      transform: translateX(-50%); width: 700px; height: 500px;
+      background: radial-gradient(ellipse, rgba(77,159,255,0.035) 0%, transparent 70%);
       pointer-events: none; z-index: 0;
     }
-    .page {
-      position: relative; z-index: 1;
-      width: 100%; max-width: 1140px;
-      padding: 3.5rem 4rem;
-      display: grid;
-      grid-template-rows: auto 1fr auto;
-      gap: 3rem;
-      height: 100vh;
-    }
+    .wrap { position: relative; z-index: 1; max-width: 860px; margin: 0 auto; padding: 0 2rem; }
 
-    /* HEADER */
-    .header {
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 2rem;
+    .reveal {
+      opacity: 0; transform: translateY(16px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
     }
-    .hero-tag {
-      font-family: var(--mono); font-size: 12px;
-      color: var(--accent); letter-spacing: 0.15em;
-      text-transform: uppercase; margin-bottom: 0.7rem;
-      display: flex; align-items: center; gap: 0.6rem;
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.08s; }
+    .reveal-delay-2 { transition-delay: 0.16s; }
+    .reveal-delay-3 { transition-delay: 0.24s; }
+
+    /* NAV */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: var(--bg-glass); backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border); padding: 0.85rem 0;
     }
-    .hero-tag::before { content: ''; width: 20px; height: 2px; background: var(--accent); display: inline-block; }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; }
+    .nav-logo-wrap { position: relative; display: flex; align-items: center; }
+    .nav-logo { text-decoration: none; display: flex; align-items: center; }
+    .logo-dl {
+      position: absolute; top: -4px; right: -10px;
+      width: 18px; height: 18px; border-radius: 4px;
+      background: var(--bg-card); border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; transition: opacity 0.2s; cursor: pointer; z-index: 10;
+    }
+    .logo-dl:hover { border-color: var(--accent-border); background: var(--bg-card-hover); }
+    .logo-dl svg { width: 10px; height: 10px; fill: var(--text-muted); }
+    .nav-logo-wrap:hover .logo-dl { opacity: 0.8; }
+    .nav-logo-wrap:hover .logo-dl:hover { opacity: 1; }
+    .nav-links { display: flex; gap: 2rem; align-items: center; }
+    .nav-links a {
+      font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--text-muted); text-decoration: none; transition: color 0.15s;
+      position: relative;
+    }
+    .nav-links a::after {
+      content: ''; position: absolute; bottom: -4px; left: 0;
+      width: 0; height: 1px; background: var(--accent);
+      transition: width 0.3s ease;
+    }
+    .nav-links a:hover { color: var(--accent); }
+    .nav-links a:hover::after { width: 100%; }
+    .nav-links a.active { color: var(--accent); }
+    .nav-links a.active::after { width: 100%; }
+
+    /* HERO */
+    .hero { padding: 5rem 0 3.5rem; }
     h1 {
-      font-family: var(--mono);
-      font-size: clamp(2.8rem, 5vw, 4.2rem);
-      font-weight: 700; line-height: 1.05;
-      letter-spacing: -0.02em; color: var(--text-primary);
-      margin-bottom: 0.9rem;
+      font-family: var(--mono); font-size: clamp(2.8rem, 6vw, 4.2rem);
+      font-weight: 700; line-height: 1.05; letter-spacing: -0.025em; margin-bottom: 0.75rem;
     }
-    h1 span { color: var(--accent); }
+    h1 .name { color: var(--text-primary); }
+    h1 .accent { color: var(--accent); }
     .cursor {
-      display: inline-block; width: 3px; height: 0.82em;
-      background: var(--accent); margin-left: 3px;
-      vertical-align: middle; animation: blink 1s step-end infinite;
+      display: inline-block; width: 3px; height: 0.85em; background: var(--accent);
+      margin-left: 2px; vertical-align: middle; animation: blink 1s step-end infinite;
     }
-    @keyframes blink { 50% { opacity: 0; } }
-    .hero-bio {
-      font-size: 1.05rem; color: var(--text-secondary);
-      max-width: 480px; line-height: 1.8; margin-bottom: 1.5rem;
+    @keyframes blink { 50%{opacity:0} }
+    .hero-role {
+      font-family: var(--mono); font-size: 12px; color: var(--text-secondary);
+      letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.6rem;
     }
-    .hero-links { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+    .hero-tagline {
+      font-size: 1.1rem; color: var(--text-secondary);
+      max-width: 520px; line-height: 1.7; margin-bottom: 2rem;
+    }
+    .hero-tagline strong { color: var(--text-primary); font-weight: 600; }
+    .hero-actions { display: flex; gap: 0.6rem; flex-wrap: wrap; }
     .btn {
       display: inline-flex; align-items: center; gap: 0.5rem;
-      font-family: var(--mono); font-size: 12px;
-      letter-spacing: 0.09em; text-transform: uppercase;
-      text-decoration: none; padding: 0.7rem 1.4rem;
-      border-radius: 5px; transition: all 0.18s ease; border: 1px solid;
+      font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em;
+      text-transform: uppercase; text-decoration: none; padding: 0.65rem 1.3rem;
+      border-radius: 6px; transition: all 0.18s; border: 1px solid; cursor: pointer;
     }
-    .btn-primary { background: var(--accent); color: #080809; border-color: var(--accent); font-weight: 700; }
+    .btn-primary { background: var(--accent); color: #0a0b0e; border-color: var(--accent); font-weight: 700; }
     .btn-primary:hover { background: transparent; color: var(--accent); }
     .btn-ghost { background: transparent; color: var(--text-secondary); border-color: var(--border-hover); }
     .btn-ghost:hover { border-color: var(--accent-border); color: var(--accent); }
     .btn svg { width: 13px; height: 13px; }
-    .social-icons { display: flex; gap: 0.7rem; align-items: center; flex-shrink: 0; padding-top: 0.4rem; }
-    .social-icon {
-      width: 44px; height: 44px; border-radius: 10px;
+
+    /* METRICS */
+    .metrics-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.75rem;
+      margin-top: 1.75rem; padding-top: 1.75rem; border-top: 1px solid var(--border);
+    }
+    .metric-card {
       background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 1rem; text-align: center;
+      transition: all 0.18s;
+    }
+    .metric-card:hover { border-color: var(--accent-border); }
+    .metric-value {
+      font-family: var(--mono); font-size: 1.75rem; font-weight: 700;
+      color: var(--accent); line-height: 1; margin-bottom: 0.25rem;
+    }
+    .metric-value.green { color: var(--accent-green); }
+    .metric-value.purple { color: var(--accent-purple); }
+    .metric-value.orange { color: var(--accent-orange); }
+    .metric-label {
+      font-family: var(--mono); font-size: 9px; color: var(--text-muted);
+      letter-spacing: 0.1em; text-transform: uppercase;
+    }
+
+    /* SECTIONS */
+    section { padding: 3rem 0; border-top: 1px solid var(--border); }
+    .section-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.75rem; }
+    .section-tag {
+      font-family: var(--mono); font-size: 10px; color: var(--accent);
+      letter-spacing: 0.2em; text-transform: uppercase; opacity: 0.6; white-space: nowrap;
+    }
+    .section-line { flex: 1; height: 1px; background: var(--border); }
+    h2 {
+      font-family: var(--mono); font-size: 1.35rem; font-weight: 700;
+      color: var(--text-primary); letter-spacing: -0.01em;
+    }
+
+    /* FILTER TABS */
+    .filter-tabs {
+      display: flex; gap: 0.5rem; margin-top: 1.5rem; margin-bottom: 1.5rem;
+      border-bottom: 1px solid var(--border); padding-bottom: 0;
+    }
+    .filter-tab {
+      font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--text-muted); background: none; border: none;
+      padding: 0.5rem 0.85rem; cursor: pointer; transition: all 0.2s;
+      border-bottom: 2px solid transparent; margin-bottom: -1px;
+    }
+    .filter-tab:hover { color: var(--text-secondary); }
+    .filter-tab.active { color: var(--accent); border-bottom-color: var(--accent); }
+
+    /* ABOUT */
+    .about-hook {
+      font-family: var(--mono); font-size: 12px; color: var(--accent);
+      letter-spacing: 0.04em; margin-bottom: 1rem;
+    }
+    .about-text {
+      font-size: 14px; color: var(--text-secondary); line-height: 1.8;
+      max-width: 660px; margin-bottom: 1.75rem;
+    }
+    .about-text strong { color: var(--text-primary); font-weight: 600; }
+    .about-areas {
+      display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.75rem;
+    }
+    .about-area {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 1.1rem; transition: all 0.18s;
+      position: relative; overflow: hidden;
+    }
+    .about-area::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    }
+    .about-area.area-ai::before { background: var(--accent-purple); opacity: 0.5; }
+    .about-area.area-cloud::before { background: var(--accent-orange); opacity: 0.5; }
+    .about-area.area-bi::before { background: var(--accent); opacity: 0.5; }
+    .about-area:hover { border-color: var(--border-hover); background: var(--bg-card-hover); }
+    .about-area-icon {
+      width: 28px; height: 28px; border-radius: 6px; margin-bottom: 0.65rem;
       display: flex; align-items: center; justify-content: center;
-      text-decoration: none; transition: all 0.18s ease;
     }
-    .social-icon:hover { border-color: var(--accent-border); background: var(--bg-hover); }
-    .social-icon svg { width: 18px; height: 18px; fill: var(--text-secondary); transition: fill 0.18s; }
-    .social-icon:hover svg { fill: var(--accent); }
+    .about-area-icon svg { width: 14px; height: 14px; }
+    .about-area-title {
+      font-family: var(--mono); font-size: 11px; font-weight: 700;
+      letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.4rem;
+    }
+    .about-area-text { font-size: 12.5px; color: var(--text-muted); line-height: 1.6; }
+    .about-area-text span { color: var(--text-secondary); }
+    .about-footer {
+      margin-top: 1.25rem; padding-top: 1rem; border-top: 1px solid var(--border);
+      font-size: 12.5px; color: var(--text-muted); line-height: 1.7;
+    }
+    .about-footer strong { color: var(--text-secondary); font-weight: 600; }
+    .about-footer a { color: var(--accent); text-decoration: none; }
+    .about-footer a:hover { text-decoration: underline; }
 
-    /* MAIN */
-    .main-grid {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 3rem; align-items: start;
+    /* FOCUS */
+    .focus-timeline { position: relative; margin-top: 1.25rem; padding-left: 2rem; }
+    .focus-timeline::before {
+      content: ''; position: absolute; left: 5px; top: 8px; bottom: 8px;
+      width: 1px; background: linear-gradient(to bottom, var(--accent), var(--accent-green), transparent);
     }
-    .section-label {
-      font-family: var(--mono); font-size: 11px;
-      letter-spacing: 0.18em; text-transform: uppercase;
-      color: var(--text-muted); margin-bottom: 1.4rem;
-      display: flex; align-items: center; gap: 0.9rem;
-    }
-    .section-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
-    .tech-group { margin-bottom: 1.8rem; }
-    .tech-group-title {
-      font-family: var(--mono); font-size: 10px;
-      color: var(--accent); letter-spacing: 0.14em;
-      text-transform: uppercase; margin-bottom: 0.75rem; opacity: 0.75;
-    }
-    .tech-pills { display: flex; flex-wrap: wrap; gap: 0.65rem; }
-    .pill {
-      display: flex; align-items: center; gap: 0.55rem;
+    .focus-item {
+      position: relative; display: flex; align-items: flex-start; gap: 1rem;
       background: var(--bg-card); border: 1px solid var(--border);
-      border-radius: 8px; padding: 0.55rem 1rem;
-      font-size: 14px; font-weight: 500; color: var(--text-primary);
-      transition: all 0.15s ease;
+      border-radius: var(--radius); padding: 0.9rem 1.1rem; margin-bottom: 0.6rem;
+      transition: all 0.18s;
     }
-    .pill:hover { border-color: var(--accent-border); background: var(--bg-hover); }
-    .pill svg { width: 20px; height: 20px; flex-shrink: 0; }
-
-    /* LINKS */
-    .links-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-    .link-card {
-      display: flex; align-items: center; gap: 1rem;
-      background: var(--bg-card); border: 1px solid var(--border);
-      border-radius: 12px; padding: 1.3rem 1.4rem;
-      text-decoration: none; transition: all 0.18s ease;
+    .focus-item:hover { border-color: var(--border-hover); background: var(--bg-card-hover); transform: translateX(4px); }
+    .focus-item::before {
+      content: ''; position: absolute; left: -2rem; top: 1rem;
+      width: 10px; height: 10px; border-radius: 50%;
+      background: var(--bg); border: 2px solid var(--accent); z-index: 1;
     }
-    .link-card:hover { border-color: var(--accent-border); background: var(--bg-hover); transform: translateY(-2px); }
-    .link-card-icon {
-      width: 40px; height: 40px; border-radius: 9px;
+    .focus-item.active::before { background: var(--accent); box-shadow: 0 0 6px rgba(77,159,255,0.35); }
+    .focus-item.completed::before { border-color: var(--accent-green); background: var(--accent-green); box-shadow: none; }
+    .focus-content { flex: 1; }
+    .focus-title { font-family: var(--mono); font-size: 13px; font-weight: 700; color: var(--text-primary); margin-bottom: 0.15rem; }
+    .focus-text { font-size: 12.5px; color: var(--text-muted); }
+    .focus-badge {
+      font-family: var(--mono); font-size: 8px;
+      letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent);
       background: var(--accent-dim); border: 1px solid var(--accent-border);
-      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+      padding: 0.1rem 0.45rem; border-radius: 100px; white-space: nowrap; flex-shrink: 0; align-self: center;
     }
-    .link-card-icon svg { width: 18px; height: 18px; fill: var(--accent); }
-    .link-card-title { font-family: var(--mono); font-size: 14px; font-weight: 700; color: var(--text-primary); }
-    .link-card-desc { font-size: 12px; color: var(--text-muted); margin-top: 3px; }
+    .focus-badge.completed { color: var(--accent-green); background: var(--accent-green-dim); border-color: var(--accent-green-border); }
+    .focus-badge.researching { color: var(--accent-orange); background: var(--accent-orange-dim); border-color: var(--accent-orange-border); }
+
+    /* PROJECT CARDS — course-card style */
+    .projects-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 0.7rem; margin-top: 0;
+    }
+    .project-card {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 0; overflow: hidden;
+      transition: all 0.2s; cursor: pointer; position: relative; display: flex; flex-direction: column;
+    }
+    .project-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      opacity: 0.6; transition: opacity 0.2s;
+    }
+    .project-card.card-ai::before { background: linear-gradient(90deg, var(--accent-purple), var(--accent)); opacity: 0.6; }
+    .project-card.card-bi::before { background: var(--accent); opacity: 0.6; }
+    .project-card.card-data::before { background: var(--accent-green); opacity: 0.6; }
+    .project-card.card-cloud::before { background: var(--accent-orange); opacity: 0.6; }
+    .project-card:hover { border-color: var(--border-hover); background: var(--bg-card-hover); transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,0,0,0.25); }
+    .project-card:hover::before { opacity: 1; }
+    .project-card.expanded { box-shadow: none; transform: none; }
+    .project-card-body { padding: 1.15rem 1.25rem; flex: 1; display: flex; flex-direction: column; gap: 0.6rem; }
+    .project-card-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 0.5rem; }
+    .project-title {
+      font-family: var(--mono); font-size: 13px; font-weight: 700; color: var(--text-primary); line-height: 1.35;
+    }
+    .project-badge {
+      font-family: var(--mono); font-size: 8px;
+      letter-spacing: 0.1em; text-transform: uppercase; padding: 0.15rem 0.55rem; border-radius: 3px; white-space: nowrap; flex-shrink: 0;
+    }
+    .badge-live { color: #22c55e; background: rgba(34,197,94,0.1); border: 1px solid rgba(34,197,94,0.2); }
+    .badge-new { color: var(--accent-purple); background: var(--accent-purple-dim); border: 1px solid var(--accent-purple-border); }
+    .badge-done { color: var(--accent-green); background: var(--accent-green-dim); border: 1px solid var(--accent-green-border); }
+    .project-desc { font-size: 12.5px; color: var(--text-muted); line-height: 1.6; flex: 1; }
+    .project-meta {
+      display: flex; flex-wrap: wrap; gap: 0.3rem; margin-top: auto; padding-top: 0.6rem;
+      border-top: 1px solid var(--border);
+    }
+    .stack-tag {
+      font-family: var(--mono); font-size: 10px;
+      color: var(--text-muted); background: var(--bg-hover);
+      border: 1px solid var(--border); border-radius: 3px; padding: 0.2rem 0.5rem;
+    }
+    .project-details {
+      max-height: 0; overflow: hidden; transition: max-height 0.3s ease, opacity 0.3s ease; opacity: 0;
+    }
+    .project-card.expanded .project-details { max-height: 300px; opacity: 1; }
+    .project-details-inner {
+      padding-top: 0.6rem; border-top: 1px solid var(--border);
+      font-size: 12px; color: var(--text-muted); line-height: 1.7;
+    }
+    .project-details-inner code {
+      font-family: var(--mono); font-size: 10.5px; color: var(--accent);
+      background: var(--accent-dim); padding: 0.1rem 0.3rem; border-radius: 3px;
+    }
+    .project-result {
+      display: inline-flex; align-items: center; gap: 0.35rem;
+      font-family: var(--mono); font-size: 10px;
+      color: var(--accent-green); background: var(--accent-green-dim);
+      border: 1px solid var(--accent-green-border);
+      border-radius: 3px; padding: 0.15rem 0.5rem; width: fit-content;
+    }
+    .project-result svg { width: 10px; height: 10px; }
+
+    /* STACK */
+    .stack-category { margin-bottom: 1.25rem; }
+    .stack-category-header { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.6rem; }
+    .stack-category-icon { width: 18px; height: 18px; border-radius: 4px; display: flex; align-items: center; justify-content: center; }
+    .stack-category-icon svg { width: 12px; height: 12px; }
+    .stack-category-title { font-family: var(--mono); font-size: 10px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; }
+    .pills { display: flex; flex-wrap: wrap; gap: 0.45rem; }
+    .pill {
+      display: flex; align-items: center; gap: 0.45rem;
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: 6px; padding: 0.45rem 0.85rem;
+      font-size: 13px; font-weight: 500; color: var(--text-primary); transition: all 0.18s; cursor: default;
+    }
+    .pill::before { content: ''; width: 5px; height: 5px; border-radius: 50%; flex-shrink: 0; opacity: 0.7; }
+    .pill:hover { border-color: var(--border-hover); background: var(--bg-card-hover); }
+    .pill-bi::before { background: #4d9fff; }
+    .pill-bi:hover { border-color: rgba(77,159,255,0.3); }
+    .pill-ai::before { background: #a78bfa; }
+    .pill-ai:hover { border-color: rgba(167,139,250,0.3); }
+    .pill-data::before { background: #34d399; }
+    .pill-data:hover { border-color: rgba(52,211,153,0.3); }
+    .pill-cloud::before { background: #fb923c; }
+    .pill-cloud:hover { border-color: rgba(251,146,60,0.3); }
+
+    /* CONTACT */
+    .contact-form {
+      margin-top: 1.25rem; background: var(--bg-card);
+      border: 1px solid var(--border); border-radius: var(--radius); padding: 1.25rem;
+    }
+    .form-row { display: flex; gap: 0.65rem; margin-bottom: 0.65rem; }
+    .form-group { flex: 1; }
+    .form-label {
+      display: block; font-family: var(--mono); font-size: 9px;
+      color: var(--text-muted); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 0.35rem;
+    }
+    .form-input, .form-textarea {
+      width: 100%; background: var(--bg-hover); border: 1px solid var(--border);
+      border-radius: 6px; padding: 0.6rem 0.85rem; font-family: var(--sans);
+      font-size: 14px; color: var(--text-primary); outline: none; transition: border-color 0.18s;
+    }
+    .form-input:focus, .form-textarea:focus { border-color: var(--accent-border); }
+    .form-textarea { resize: vertical; min-height: 90px; }
+    .form-submit {
+      width: 100%; background: var(--accent); color: #0a0b0e;
+      border: none; border-radius: 6px; padding: 0.75rem;
+      font-family: var(--mono); font-size: 11px; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer;
+      transition: all 0.18s; margin-top: 0.2rem;
+    }
+    .form-submit:hover { background: #3d8fee; }
+    .form-status { margin-top: 0.6rem; font-family: var(--mono); font-size: 11px; text-align: center; display: none; }
+    .form-status.success { display: block; color: var(--accent-green); }
+    .form-hint {
+      margin-top: 0.6rem; text-align: center;
+      font-family: var(--mono); font-size: 10px; color: var(--text-muted);
+    }
+    .form-hint a { color: var(--accent); text-decoration: none; }
+    .form-hint a:hover { text-decoration: underline; }
 
     /* FOOTER */
-    .footer {
-      display: flex; align-items: center; justify-content: space-between;
-      border-top: 1px solid var(--border); padding-top: 1.4rem;
-      font-family: var(--mono); font-size: 12px; color: var(--text-muted);
-    }
-    .footer strong { color: var(--text-secondary); }
+    footer { border-top: 1px solid var(--border); padding: 1.75rem 0; margin-top: 0.5rem; }
+    .footer-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.75rem; }
+    .footer-left { font-family: var(--mono); font-size: 11px; color: var(--text-muted); }
+    .footer-left strong { color: var(--text-secondary); }
+    .footer-right { font-family: var(--mono); font-size: 10px; color: var(--text-muted); display: flex; align-items: center; gap: 0.5rem; }
+    .footer-dot { width: 5px; height: 5px; border-radius: 50%; background: #22c55e; animation: pulse 2s ease infinite; }
+    @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(0.8)} }
 
-    @keyframes fadeUp { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
-    .header { animation: fadeUp 0.5s 0.05s ease both; }
-    .main-grid { animation: fadeUp 0.5s 0.15s ease both; }
-    .footer { animation: fadeUp 0.5s 0.25s ease both; }
+    .back-to-top {
+      position: fixed; bottom: 1.5rem; right: 1.5rem; z-index: 99;
+      width: 36px; height: 36px; border-radius: 6px;
+      background: var(--bg-card); border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; opacity: 0; transform: translateY(10px);
+      transition: all 0.3s ease; pointer-events: none;
+    }
+    .back-to-top.visible { opacity: 1; transform: translateY(0); pointer-events: auto; }
+    .back-to-top:hover { border-color: var(--accent-border); background: var(--bg-card-hover); }
+    .back-to-top svg { width: 16px; height: 16px; fill: var(--text-secondary); }
+
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--border-hover); border-radius: 3px; }
+
+    @keyframes fadeUp { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:translateY(0)} }
+    .hero { animation: fadeUp 0.55s ease both; }
+
+    @keyframes xStroke { from { stroke-dashoffset: 32; } to { stroke-dashoffset: 0; } }
+    @keyframes nodeIn { from { opacity: 0; transform: scale(0.3); } to { opacity: 1; transform: scale(1); } }
+    @keyframes ringIn { from { opacity: 0; transform: scale(0.6); } to { opacity: 1; transform: scale(1); } }
+    @keyframes glowIn { from { opacity: 0; } to { opacity: 0.1; } }
+    .x-line { stroke-dasharray: 32; stroke-dashoffset: 32; animation: xStroke 0.6s ease forwards; }
+    .x-line-2 { animation-delay: 0.1s; }
+    .x-node { opacity: 0; transform-origin: center; animation: nodeIn 0.3s ease forwards; }
+    .x-node-d1 { animation-delay: 0.4s; }
+    .x-node-d2 { animation-delay: 0.5s; }
+    .x-node-d3 { animation-delay: 0.6s; }
+    .x-node-d4 { animation-delay: 0.7s; }
+    .x-node-c { animation-delay: 0.8s; }
+    .x-ring { opacity: 0; transform-origin: center; animation: ringIn 0.4s ease forwards; }
+    .x-ring-1 { animation-delay: 0.9s; }
+    .x-ring-2 { animation-delay: 1.05s; }
+    .x-glow { opacity: 0; animation: glowIn 0.5s ease forwards; animation-delay: 1.1s; }
 
     @media (max-width: 768px) {
-      body { overflow: auto; align-items: flex-start; }
-      .page { height: auto; padding: 2rem 1.5rem; }
-      .header { flex-direction: column; }
-      .main-grid { grid-template-columns: 1fr; }
-      .links-grid { grid-template-columns: 1fr; }
+      .wrap { padding: 0 1.25rem; }
+      .hero { padding: 3.5rem 0 2.5rem; }
+      h1 { font-size: 2.2rem; }
+      .nav-links { gap: 1.25rem; }
+      .metrics-grid { grid-template-columns: repeat(2, 1fr); }
+      .about-areas { grid-template-columns: 1fr; }
+      .projects-grid { grid-template-columns: 1fr; }
+      .form-row { flex-direction: column; }
+      .focus-timeline { padding-left: 1.5rem; }
+      .filter-tabs { overflow-x: auto; }
+    }
+    @media (max-width: 480px) {
+      .hero-actions { flex-direction: column; }
+      .btn { justify-content: center; }
+      .metrics-grid { grid-template-columns: 1fr 1fr; }
+      .metric-value { font-size: 1.4rem; }
     }
   </style>
 </head>
 <body>
-<div class="page">
 
-  <div class="header">
-    <div>
-      <p class="hero-tag">BI &amp; AI Developer</p>
-      <h1>Xavier <span>Mareca</span><span class="cursor"></span></h1>
-      <p class="hero-bio">Building intelligent data systems at the intersection of BI and AI. Focused on AWS ML, LLM-powered applications, and scalable data pipelines.</p>
-      <div class="hero-links">
-        <a class="btn btn-primary" href="https://www.linkedin.com/in/xavier-mareca-247344148/?locale=en" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-          LinkedIn
-        </a>
-        <a class="btn btn-ghost" href="https://github.com/xdt-ai" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-          GitHub
-        </a>
-      </div>
-    </div>
-    <div class="social-icons">
-      <a class="social-icon" href="https://x.com/xavierdatatech" target="_blank" rel="noopener" title="X">
-        <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.737-8.835L1.254 2.25H8.08l4.253 5.622 5.911-5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+<nav>
+  <div class="wrap nav-inner">
+    <div class="nav-logo-wrap">
+      <a class="nav-logo" href="#" aria-label="Home">
+        <svg width="28" height="28" viewBox="0 0 32 32" fill="none">
+          <line class="x-line" x1="5" y1="5" x2="27" y2="27" stroke="#4d9fff" stroke-width="1.8" stroke-linecap="round"/>
+          <line class="x-line x-line-2" x1="27" y1="5" x2="5" y2="27" stroke="#4d9fff" stroke-width="1.8" stroke-linecap="round"/>
+          <g class="x-node x-node-d1"><circle cx="5" cy="5" r="2.3" fill="#0a0b0e" stroke="#4d9fff" stroke-width="1.1"/><circle cx="5" cy="5" r="0.9" fill="#4d9fff"/></g>
+          <g class="x-node x-node-d2"><circle cx="27" cy="5" r="2.3" fill="#0a0b0e" stroke="#4d9fff" stroke-width="1.1"/><circle cx="27" cy="5" r="0.9" fill="#4d9fff"/></g>
+          <g class="x-node x-node-d3"><circle cx="5" cy="27" r="2.3" fill="#0a0b0e" stroke="#4d9fff" stroke-width="1.1"/><circle cx="5" cy="27" r="0.9" fill="#4d9fff"/></g>
+          <g class="x-node x-node-d4"><circle cx="27" cy="27" r="2.3" fill="#0a0b0e" stroke="#4d9fff" stroke-width="1.1"/><circle cx="27" cy="27" r="0.9" fill="#4d9fff"/></g>
+          <circle class="x-ring x-ring-1" cx="16" cy="16" r="5.5" fill="none" stroke="#4d9fff" stroke-width="0.6" opacity="0.3"/>
+          <circle class="x-ring x-ring-2" cx="16" cy="16" r="8" fill="none" stroke="#4d9fff" stroke-width="0.4" opacity="0.12"/>
+          <g class="x-node x-node-c"><circle cx="16" cy="16" r="2.8" fill="#0a0b0e" stroke="#4d9fff" stroke-width="1.2"/><circle cx="16" cy="16" r="1.1" fill="#4d9fff"/></g>
+          <circle class="x-glow" cx="16" cy="16" r="7" fill="url(#logoGlow)"/>
+          <defs><radialGradient id="logoGlow"><stop stop-color="#4d9fff" stop-opacity="0.5"/><stop offset="1" stop-color="#4d9fff" stop-opacity="0"/></radialGradient></defs>
+        </svg>
       </a>
-      <a class="social-icon" href="https://bsky.app/profile/xavierdatatech.bsky.social" target="_blank" rel="noopener" title="Bluesky">
-        <svg viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm0 4c1.657 0 3 1.567 3 3.5S13.657 13 12 13s-3-1.567-3-3.5S10.343 6 12 6zm0 12c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08C16.71 16.72 14.5 18 12 18z"/></svg>
+      <div class="logo-dl" onclick="downloadLogoPNG()" title="Download logo as PNG">
+        <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      </div>
+    </div>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#focus">Focus</a>
+      <a href="#projects">Projects</a>
+      <a href="#stack">Stack</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <div class="hero">
+    <h1><span class="name">Xavier</span><br><span class="accent">Mareca</span><span class="cursor"></span></h1>
+    <p class="hero-role">Data &amp; AI Consultant</p>
+    <p class="hero-tagline">I help mid-size European companies turn their data into <strong>intelligent systems</strong> — combining modern BI, LLM applications, and cloud automation.</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="https://www.linkedin.com/in/xavier-mareca-247344148/?locale=en" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        LinkedIn
+      </a>
+      <a class="btn btn-ghost" href="https://github.com/xdt-ai" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+        GitHub
+      </a>
+      <a class="btn btn-ghost" href="mailto:hello@xavierdatatech.com">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        Email
+      </a>
+      <a class="btn btn-ghost" href="https://x.com/xavierdatatech" target="_blank" rel="noopener" aria-label="X">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.737-8.835L1.254 2.25H8.08l4.253 5.622 5.911-5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
       </a>
     </div>
+
+    <div class="metrics-grid reveal">
+      <div class="metric-card">
+        <div class="metric-value" data-count="20">0</div>
+        <div class="metric-label">Years with Data</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-value green" data-count="20">0</div>
+        <div class="metric-label">Projects Delivered</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-value purple" data-count="15">0</div>
+        <div class="metric-label">AI Systems Built</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-value orange" data-count="4">0</div>
+        <div class="metric-label">Languages</div>
+      </div>
+    </div>
   </div>
 
-  <div class="main-grid">
-
-    <div>
-      <p class="section-label">Tech stack</p>
-
-      <div class="tech-group">
-        <p class="tech-group-title">Business Intelligence</p>
-        <div class="tech-pills">
-          <div class="pill">
-            <!-- Power BI -->
-            <svg viewBox="0 0 32 32" fill="none">
-              <rect width="32" height="32" rx="4" fill="#F2C811"/>
-              <rect x="6" y="18" width="4" height="8" rx="1" fill="#1a1a1a"/>
-              <rect x="12" y="12" width="4" height="14" rx="1" fill="#1a1a1a"/>
-              <rect x="18" y="8" width="4" height="18" rx="1" fill="#1a1a1a"/>
-              <rect x="24" y="14" width="4" height="12" rx="1" fill="#1a1a1a"/>
-            </svg>
-            Power BI
-          </div>
-          <div class="pill">
-            <!-- Microsoft Fabric - F logo -->
-            <svg viewBox="0 0 32 32" fill="none">
-              <rect width="32" height="32" rx="4" fill="#0078D4"/>
-              <text x="7" y="24" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="white">F</text>
-              <rect x="7" y="26" width="12" height="2" rx="1" fill="#50C0FF" opacity="0.7"/>
-            </svg>
-            Microsoft Fabric
-          </div>
-          <div class="pill">
-            <!-- SQL -->
-            <svg viewBox="0 0 32 32" fill="none">
-              <rect width="32" height="32" rx="4" fill="#CC2927"/>
-              <ellipse cx="16" cy="10" rx="8" ry="3.5" fill="white" opacity="0.9"/>
-              <path d="M8 10v4c0 1.9 3.6 3.5 8 3.5s8-1.6 8-3.5v-4" stroke="white" stroke-width="1.5" fill="none" opacity="0.9"/>
-              <path d="M8 14v4c0 1.9 3.6 3.5 8 3.5s8-1.6 8-3.5v-4" stroke="white" stroke-width="1.5" fill="none" opacity="0.9"/>
-            </svg>
-            SQL
-          </div>
-          <div class="pill">
-            <!-- Databricks -->
-            <svg viewBox="0 0 32 32" fill="none">
-              <rect width="32" height="32" rx="4" fill="#FF3621"/>
-              <polygon points="16,5 27,11 27,21 16,27 5,21 5,11" fill="none" stroke="white" stroke-width="1.5" opacity="0.4"/>
-              <polygon points="16,9 23,13 23,19 16,23 9,19 9,13" fill="white" opacity="0.85"/>
-            </svg>
-            Databricks
-          </div>
+  <section id="about">
+    <div class="section-header"><span class="section-tag">Background</span><div class="section-line"></div></div>
+    <h2 class="reveal">About</h2>
+    <div class="reveal reveal-delay-1">
+      <p class="about-hook">Data is my language. I've been speaking it since 1984.</p>
+      <p class="about-text">
+        I'm Xavier Mareca, an independent Data &amp; AI Consultant and founder of XDT Studio. I help mid-size European companies turn their data into intelligent systems — without the hype.
+      </p>
+      <p class="about-text">
+        I build production-ready AI applications and modern data platforms using AWS, Microsoft Fabric, LangChain, and Python. My work focuses on RAG pipelines, multi-agent systems, and cloud-native data engineering.
+      </p>
+      <p class="about-text">
+        With decades of experience in data — from Oracle and SQL Server to today's AI stack — I bring a practical, results-driven approach to every project. I speak Spanish, French, English, and German, which helps me work seamlessly with teams across Europe.
+      </p>
+    </div>
+    <div class="about-areas reveal reveal-delay-2">
+      <div class="about-area area-ai">
+        <div class="about-area-icon" style="background:rgba(167,139,250,0.1);border:1px solid rgba(167,139,250,0.18);">
+          <svg viewBox="0 0 24 24" fill="#a78bfa"><path d="M12 2a2 2 0 0 1 2 2c0 .74-.4 1.39-1 1.73V7h1a7 7 0 0 1 7 7h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1.07A7 7 0 0 1 14 23h-4a7 7 0 0 1-5.93-4H3a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h1a7 7 0 0 1 7-7h1V5.73c-.6-.34-1-.99-1-1.73a2 2 0 0 1 2-2z"/></svg>
+        </div>
+        <div class="about-area-title" style="color:var(--accent-purple);">AI &amp; LLMs</div>
+        <div class="about-area-text">
+          <span>RAG pipelines</span>, local AI deployments with Ollama and LangChain, migrating legacy systems into cloud-based AI.
         </div>
       </div>
-
-      <div class="tech-group">
-        <p class="tech-group-title">AI Engineering</p>
-        <div class="tech-pills">
-          <div class="pill">
-            <!-- Python -->
-            <svg viewBox="0 0 32 32" fill="none">
-              <rect width="32" height="32" rx="4" fill="#3776AB"/>
-              <path d="M16 4c-3.3 0-5.5 1.4-5.5 3.2v2.8h5.5v1H8.5C6.5 11 4.5 12.7 4.5 16s2 5 4 5H10v-3.2c0-2.2 1.8-3.3 3.5-3.3h5c1.8 0 3.5-1.4 3.5-3.8V7.2C22 5.3 19.3 4 16 4zm-1.5 2.5a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" fill="white" opacity="0.9"/>
-              <path d="M16 28c3.3 0 5.5-1.4 5.5-3.2v-2.8H16v-1h7.5c2 0 4-1.7 4-5s-2-5-4-5H22v3.2c0 2.2-1.8 3.3-3.5 3.3h-5c-1.8 0-3.5 1.4-3.5 3.8v4.5C10 26.7 12.7 28 16 28zm1.5-2.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z" fill="#FFD43B" opacity="0.9"/>
-            </svg>
-            Python
-          </div>
-          <div class="pill">
-            <!-- LangChain -->
-            <svg viewBox="0 0 32 32" fill="none">
-              <rect width="32" height="32" rx="4" fill="#1C3C3C"/>
-              <circle cx="16" cy="16" r="4" fill="#00B27A"/>
-              <path d="M7 16a9 9 0 0 1 9-9" stroke="#00B27A" stroke-width="2" stroke-linecap="round" fill="none"/>
-              <path d="M25 16a9 9 0 0 1-9 9" stroke="#00B27A" stroke-width="2" stroke-linecap="round" fill="none"/>
-            </svg>
-            LangChain
-          </div>
-          <div class="pill">
-            <!-- FastAPI -->
-            <svg viewBox="0 0 32 32" fill="none">
-              <rect width="32" height="32" rx="4" fill="#059669"/>
-              <path d="M18 5l-8 14h7l-1 8 8-14h-7l1-8z" fill="white"/>
-            </svg>
-            FastAPI
-          </div>
-          <div class="pill">
-            <!-- RAG/LLMs -->
-            <svg viewBox="0 0 32 32" fill="none">
-              <rect width="32" height="32" rx="4" fill="#7C3AED"/>
-              <circle cx="16" cy="16" r="5" fill="white" opacity="0.9"/>
-              <path d="M16 5v4M16 23v4M5 16h4M23 16h4M8.5 8.5l3 3M20.5 20.5l3 3M8.5 23.5l3-3M20.5 11.5l3-3" stroke="white" stroke-width="1.8" stroke-linecap="round" opacity="0.5"/>
-            </svg>
-            RAG / LLMs
-          </div>
+      <div class="about-area area-cloud">
+        <div class="about-area-icon" style="background:rgba(251,146,60,0.1);border:1px solid rgba(251,146,60,0.18);">
+          <svg viewBox="0 0 24 24" fill="#fb923c"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg>
+        </div>
+        <div class="about-area-title" style="color:var(--accent-orange);">Cloud Engineering</div>
+        <div class="about-area-text">
+          <span>AWS serverless</span> — SageMaker, Lambda, DynamoDB, API Gateway, EventBridge — and <span>Microsoft Fabric</span> data lakehouse.
         </div>
       </div>
-
-      <div class="tech-group">
-        <p class="tech-group-title">Cloud &amp; Big Data</p>
-        <div class="tech-pills">
-          <div class="pill">
-            <!-- AWS -->
-            <svg viewBox="0 0 32 32" fill="none">
-              <rect width="32" height="32" rx="4" fill="#232F3E"/>
-              <path d="M10 20c-1.1-.4-2-1.3-2-2.5 0-1.5 1.2-2.5 2.8-2.5.3 0 .6 0 .9.1C12 13.4 13.4 12 15.5 12c1.5 0 2.8.8 3.5 2 .2 0 .4-.1.6-.1 1.7 0 3 1.2 3 2.8 0 1.4-1 2.5-2.3 2.7" stroke="#FF9900" stroke-width="1.5" fill="none" stroke-linecap="round"/>
-              <path d="M11 23l2-1.5M21 23l-2-1.5M16 24v-3" stroke="#FF9900" stroke-width="1.5" stroke-linecap="round"/>
-            </svg>
-            AWS
-          </div>
-          <div class="pill">
-            <!-- Azure -->
-            <svg viewBox="0 0 32 32" fill="none">
-              <rect width="32" height="32" rx="4" fill="#0078D4"/>
-              <path d="M14 6l-7 16h6l9-10-8-6z" fill="white" opacity="0.95"/>
-              <path d="M12 24H7l9-4 7-14-5 7-6 11z" fill="white" opacity="0.7"/>
-            </svg>
-            Azure
-          </div>
-          <div class="pill">
-            <!-- PySpark flame -->
-            <svg viewBox="0 0 32 32" fill="none">
-              <rect width="32" height="32" rx="4" fill="#E25A1C"/>
-              <path d="M16 5c0 0-3 4-2 8 .5 2 2 3.5 1.5 6C15 21 13 23 13 23s4-1.5 5-5c1-4-2-6-1-10 .5-2 2-3 2-3h-3z" fill="white" opacity="0.95"/>
-              <path d="M12 9c0 0-1.5 3 0 5.5s3.5 3.5 2.5 6C14 22 12 24 12 24s3-1.5 3.5-4.5c.5-3-2-5-1-8C15 9.5 16 8 16 8l-4 1z" fill="white" opacity="0.55"/>
-            </svg>
-            PySpark
-          </div>
+      <div class="about-area area-bi">
+        <div class="about-area-icon" style="background:rgba(77,159,255,0.1);border:1px solid rgba(77,159,255,0.18);">
+          <svg viewBox="0 0 24 24" fill="#4d9fff"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/></svg>
+        </div>
+        <div class="about-area-title" style="color:var(--accent);">Business Intelligence</div>
+        <div class="about-area-text">
+          <span>Advanced semantic models</span>, complex DAX logic, high-performance analytics workflows via Power BI.
         </div>
       </div>
     </div>
+    <div class="about-footer reveal reveal-delay-3">
+      <strong>AWS ML Engineer Associate</strong> certified. Working with Databricks (Delta Lake, Spark, Unity Catalog). Publishes tech analyses on enterprise tools and serverless computing on <a href="https://www.linkedin.com/in/xavier-mareca-247344148/?locale=en" target="_blank" rel="noopener">LinkedIn</a> and at <a href="https://xdt.ai" target="_blank" rel="noopener">XDT.AI</a>.
+    </div>
+  </section>
 
-    <div>
-      <p class="section-label">Find me online</p>
-      <div class="links-grid">
-
-        <a class="link-card" href="https://www.linkedin.com/in/xavier-mareca-247344148/?locale=en" target="_blank" rel="noopener">
-          <div class="link-card-icon">
-            <svg viewBox="0 0 24 24" fill="#4d9fff"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-          </div>
-          <div><div class="link-card-title">LinkedIn</div><div class="link-card-desc">Professional profile</div></div>
-        </a>
-
-        <a class="link-card" href="https://github.com/xdt-ai" target="_blank" rel="noopener">
-          <div class="link-card-icon">
-            <svg viewBox="0 0 24 24" fill="#4d9fff"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-          </div>
-          <div><div class="link-card-title">GitHub</div><div class="link-card-desc">Code &amp; projects</div></div>
-        </a>
-
-        <a class="link-card" href="https://x.com/xavierdatatech" target="_blank" rel="noopener">
-          <div class="link-card-icon">
-            <svg viewBox="0 0 24 24" fill="#4d9fff"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.737-8.835L1.254 2.25H8.08l4.253 5.622 5.911-5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-          </div>
-          <div><div class="link-card-title">X (Twitter)</div><div class="link-card-desc">Data &amp; AI thoughts</div></div>
-        </a>
-
-        <a class="link-card" href="https://bsky.app/profile/xavierdatatech.bsky.social" target="_blank" rel="noopener">
-          <div class="link-card-icon">
-            <svg viewBox="0 0 24 24" fill="#4d9fff"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm0 4c1.657 0 3 1.567 3 3.5S13.657 13 12 13s-3-1.567-3-3.5S10.343 6 12 6zm0 12c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08C16.71 16.72 14.5 18 12 18z"/></svg>
-          </div>
-          <div><div class="link-card-title">Bluesky</div><div class="link-card-desc">Tech updates</div></div>
-        </a>
-
+  <section id="focus">
+    <div class="section-header"><div class="section-line"></div></div>
+    <h2 class="reveal">Current focus</h2>
+    <div class="focus-timeline reveal reveal-delay-1">
+      <div class="focus-item active">
+        <div class="focus-content">
+          <div class="focus-title">AWS Machine Learning Engineer</div>
+          <div class="focus-text">Building production ML pipelines with SageMaker, Lambda, and Step Functions</div>
+        </div>
+        <span class="focus-badge">In Progress</span>
+      </div>
+      <div class="focus-item">
+        <div class="focus-content">
+          <div class="focus-title">Multi-Agent Systems</div>
+          <div class="focus-text">Exploring CrewAI and LangGraph for complex AI workflows</div>
+        </div>
+        <span class="focus-badge researching">Researching</span>
+      </div>
+      <div class="focus-item completed">
+        <div class="focus-content">
+          <div class="focus-title">Anthropic Claude Integration</div>
+          <div class="focus-text">Production RAG systems with Claude 3.5 Sonnet and Haiku</div>
+        </div>
+        <span class="focus-badge completed">Completed</span>
+      </div>
+      <div class="focus-item completed">
+        <div class="focus-content">
+          <div class="focus-title">Power BI Advanced Analytics</div>
+          <div class="focus-text">Enterprise dashboards with DAX optimization and incremental refresh</div>
+        </div>
+        <span class="focus-badge completed">Completed</span>
       </div>
     </div>
+  </section>
 
-  </div>
+  <section id="projects">
+    <div class="section-header"><span class="section-tag">Work</span><div class="section-line"></div></div>
+    <h2 class="reveal">Selected projects</h2>
 
-  <div class="footer">
-    <span><strong>Xavier Mareca</strong> · BI &amp; AI Developer</span>
-    <span>Zaragoza, Spain</span>
-  </div>
+    <div class="filter-tabs reveal reveal-delay-1">
+      <button class="filter-tab active" data-filter="all" onclick="filterProjects('all', this)">All Projects</button>
+      <button class="filter-tab" data-filter="ai" onclick="filterProjects('ai', this)">AI &amp; LLMs</button>
+      <button class="filter-tab" data-filter="bi" onclick="filterProjects('bi', this)">BI &amp; Analytics</button>
+      <button class="filter-tab" data-filter="data" onclick="filterProjects('data', this)">Data Engineering</button>
+      <button class="filter-filter" data-filter="cloud" onclick="filterProjects('cloud', this)">Cloud</button>
+    </div>
+
+    <div class="projects-grid">
+      <div class="project-card card-ai reveal" data-cat="ai">
+        <div class="project-body">
+          <div class="project-top">
+            <p class="project-title">AI-Powered BI Assistant</p>
+            <span class="project-badge badge-live">LIVE</span>
+          </div>
+          <p class="project-desc">Natural language querying over structured data with semantic understanding. 86 integration tests, sub-3s response time.</p>
+          <div class="project-meta">
+            <span class="stack-tag">LangChain</span>
+            <span class="stack-tag">RAG</span>
+            <span class="stack-tag">Claude</span>
+            <span class="stack-tag">FastAPI</span>
+            <span class="stack-tag">ChromaDB</span>
+          </div>
+          <span class="project-result"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>v1.0.0</span>
+          <div class="project-details">
+            <div class="project-details-inner">
+              • 86 integration tests with <code>pytest</code><br>
+              • Handles complex JOINs and aggregations<br>
+              • Deployed on AWS ECS with auto-scaling
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card card-ai reveal reveal-delay-1" data-cat="ai">
+        <div class="project-body">
+          <div class="project-top">
+            <p class="project-title">HR RAG Assistant</p>
+            <span class="project-badge badge-live">LIVE</span>
+          </div>
+          <p class="project-desc">Multi-turn conversational assistant over HR policies. 50+ document ingestion, session-based memory, 95% accuracy.</p>
+          <div class="project-meta">
+            <span class="stack-tag">LangChain</span>
+            <span class="stack-tag">ChromaDB</span>
+            <span class="stack-tag">Claude</span>
+            <span class="stack-tag">FastAPI</span>
+            <span class="stack-tag">GitHub Actions</span>
+          </div>
+          <span class="project-result"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>CI/CD Ready</span>
+          <div class="project-details">
+            <div class="project-details-inner">
+              • Session memory with <code>Redis</code><br>
+              • Automatic re-indexing on doc updates<br>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card card-bi reveal reveal-delay-2" data-cat="bi">
+        <div class="project-body">
+          <div class="project-top">
+            <p class="project-title">Sales Analytics Pipeline</p>
+            <span class="project-badge badge-done">DONE</span>
+          </div>
+          <p class="project-desc">End-to-end data pipeline from 10+ sources to executive dashboards. 500GB+ daily, 80% less compute.</p>
+          <div class="project-meta">
+            <span class="stack-tag">PySpark</span>
+            <span class="stack-tag">Delta Lake</span>
+            <span class="stack-tag">Power BI</span>
+            <span class="stack-tag">Azure</span>
+          </div>
+          <span class="project-result"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>10x Faster</span>
+          <div class="project-details">
+            <div class="project-details-inner">
+              • Real-time KPI alerts<br>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card card-data reveal reveal-delay-1" data-cat="data">
+        <div class="project-body">
+          <div class="project-top">
+            <p class="project-title">Document Intelligence</p>
+            <span class="project-badge badge-done">DONE</span>
+          </div>
+          <p class="project-desc">Automated extraction from unstructured documents. 98% accuracy, saves 40+ hours/week of manual work.</p>
+          <div class="project-meta">
+            <span class="stack-tag">Claude</span>
+            <span class="stack-tag">Python</span>
+            <span class="stack-tag">AWS Textract</span>
+            <span class="stack-tag">S3</span>
+          </div>
+          <span class="project-result"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>98% Accuracy</span>
+          <div class="project-details">
+            <div class="project-details-inner">
+              • JSON output with confidence scores<br>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card card-cloud reveal reveal-delay-2" data-cat="cloud">
+        <div class="project-body">
+          <div class="project-top">
+            <p class="project-title">Serverless Data Pipeline</p>
+            <span class="project-badge badge-live">LIVE</span>
+          </div>
+          <p class="project-desc">Event-driven serverless architecture on AWS. Lambda, EventBridge, DynamoDB, API Gateway.</p>
+          <div class="project-meta">
+            <span class="stack-tag">AWS</span>
+            <span class="stack-tag">Lambda</span>
+            <span class="stack-tag">DynamoDB</span>
+            <span class="stack-tag">API Gateway</span>
+          </div>
+          <span class="project-result"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>Serverless</span>
+          <div class="project-details">
+            <div class="project-details-inner">
+              • Event-driven architecture pattern<br>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hidden cards for filter -->
+      <div class="project-card card-ai reveal" data-cat="ai" style="display:none;">
+        <div class="project-body">
+          <div class="project-top">
+            <p class="project-title">Enterprise Chatbot Platform</p>
+            <span class="project-badge badge-done">DONE</span>
+          </div>
+          <p class="project-desc">Multi-tenant conversational AI platform with role-based access control.</p>
+          <div class="project-meta">
+            <span class="stack-tag">LangChain</span>
+            <span class="stack-tag">FastAPI</span>
+            <span class="stack-tag">Claude</span>
+            <span class="stack-tag">PostgreSQL</span>
+          </div>
+          <span class="project-result"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>Multi-tenant</span>
+        </div>
+      </div>
+
+      <div class="project-card card-bi reveal" data-cat="bi" style="display:none;">
+        <div class="project-body">
+          <div class="project-top">
+            <p class="project-title">Fabric Data Lakehouse</p>
+            <span class="project-badge badge-done">DONE</span>
+          </div>
+          <p class="project-desc">Microsoft Fabric lakehouse with incremental refresh and Unity Catalog governance.</p>
+          <div class="project-meta">
+            <span class="stack-tag">Fabric</span>
+            <span class="stack-tag">Delta Lake</span>
+            <span class="stack-tag">Unity Catalog</span>
+          </div>
+          <span class="project-result"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>Governance</span>
+        </div>
+      </div>
+
+      <div class="project-card card-data" data-cat="data" style="display:none;">
+        <div class="project-body">
+          <div class="project-top">
+            <p class="project-title">Real-Time Stream Processing</p>
+            <span class="project-badge badge-live">LIVE</span>
+          </div>
+          <p class="project-desc">Kafka + Spark Streaming for real-time event processing at scale.</p>
+          <div class="project-meta">
+            <span class="stack-tag">Kafka</span>
+            <span class="stack-tag">Spark Streaming</span>
+            <span class="stack-tag">Python</span>
+          </div>
+          <span class="project-result"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>Real-time</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="stack">
+    <div class="section-header"><div class="section-line"></div></div>
+    <h2 class="reveal">Tech stack</h2>
+    <div style="margin-top:1.25rem;">
+      <div class="stack-category reveal reveal-delay-1">
+        <div class="stack-category-header">
+          <div class="stack-category-icon" style="background:rgba(77,159,255,0.08);border:1px solid rgba(77,159,255,0.15);"><svg viewBox="0 0 24 24" fill="#4d9fff"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/></svg></div>
+          <span class="stack-category-title" style="color:#4d9fff;">Business Intelligence</span>
+        </div>
+        <div class="pills">
+          <div class="pill pill-bi">Power BI</div>
+          <div class="pill pill-bi">Microsoft Fabric</div>
+          <div class="pill pill-bi">DAX</div>
+          <div class="pill pill-bi">SQL Server</div>
+        </div>
+      </div>
+      <div class="stack-category reveal reveal-delay-2">
+        <div class="stack-category-header">
+          <div class="stack-category-icon" style="background:rgba(167,139,250,0.08);border:1px solid rgba(167,139,250,0.15);"><svg viewBox="0 0 24 24" fill="#a78bfa"><path d="M12 2a2 2 0 0 1 2 2c0 .74-.4 1.39-1 1.73V7h1a7 7 0 0 1 7 7h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1.07A7 7 0 0 1 14 23h-4a7 7 0 0 1-5.93-4H3a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h1a7 7 0 0 1 7-7h1V5.73c-.6-.34-1-.99-1-1.73a2 2 0 0 1 2-2z"/></svg></div>
+          <span class="stack-category-title" style="color:#a78bfa;">AI &amp; Agents</span>
+        </div>
+        <div class="pills">
+          <div class="pill pill-ai">CrewAI</div>
+          <div class="pill pill-ai">LangChain</div>
+          <div class="pill pill-ai">Anthropic Claude</div>
+          <div class="pill pill-ai">RAG</div>
+          <div class="pill pill-ai">Ollama</div>
+          <div class="pill pill-ai">Vector DBs</div>
+        </div>
+      </div>
+      <div class="stack-category reveal reveal-delay-3">
+        <div class="stack-category-header">
+          <div class="stack-category-icon" style="background:rgba(52,211,153,0.08);border:1px solid rgba(52,211,153,0.15);"><svg viewBox="0 0 24 24" fill="#34d399"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg></div>
+          <span class="stack-category-title" style="color:#34d399;">Data Engineering</span>
+        </div>
+        <div class="pills">
+          <div class="pill pill-data">PySpark</div>
+          <div class="pill pill-data">Delta Lake</div>
+          <div class="pill pill-data">Databricks</div>
+          <div class="pill pill-data">SQL</div>
+          <div class="pill pill-data">Python</div>
+          <div class="pill pill-data">Pandas</div>
+        </div>
+      </div>
+      <div class="stack-category reveal">
+        <div class="stack-category-header">
+          <div class="stack-category-icon" style="background:rgba(251,146,60,0.08);border:1px solid rgba(251,146,60,0.15);"><svg viewBox="0 0 24 24" fill="#fb923c"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg></div>
+          <span class="stack-category-title" style="color:#fb923c;">Cloud &amp; APIs</span>
+        </div>
+        <div class="pills">
+          <div class="pill pill-cloud">Azure</div>
+          <div class="pill pill-cloud">AWS</div>
+          <div class="pill pill-cloud">FastAPI</div>
+          <div class="pill pill-cloud">Docker</div>
+          <div class="pill pill-cloud">GitHub Actions</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="section-header"><span class="section-tag">Connect</span><div class="section-line"></div></div>
+    <h2 class="reveal">Get in touch</h2>
+    <p class="reveal reveal-delay-1" style="font-size:13px;color:var(--text-muted);margin-bottom:0;">Let's talk about your data challenges.</p>
+    <div class="contact-form reveal reveal-delay-2">
+      <form id="contactForm" onsubmit="handleSubmit(event)">
+        <div class="form-row">
+          <div class="form-group"><label class="form-label" for="name">Name</label><input type="text" id="name" class="form-input" required placeholder="Your name" /></div>
+          <div class="form-group"><label class="form-label" for="email">Email</label><input type="email" id="email" class="form-input" required placeholder="you@company.com" /></div>
+        </div>
+        <div class="form-group" style="margin-bottom:0.65rem;"><label class="form-label" for="message">Message</label><textarea id="message" class="form-textarea" required placeholder="Tell me about your project or challenge..."></textarea></div>
+        <button type="submit" class="form-submit">Send Message</button>
+        <div id="formStatus" class="form-status"></div>
+        <p class="form-hint">Prefer email? <a href="mailto:hello@xavierdatatech.com">hello@xavierdatatech.com</a></p>
+      </form>
+    </div>
+  </section>
 
 </div>
+
+<footer>
+  <div class="wrap footer-inner">
+    <div class="footer-left"><strong>Xavier Mareca</strong> · Data &amp; AI Consultant · EU</div>
+    <div class="footer-right"><div class="footer-dot"></div>Available for projects</div>
+  </div>
+</footer>
+
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">
+  <svg viewBox="0 0 24 24"><path d="M18 15l-6-6-6 6"/></svg>
+</button>
+
+<script>
+/* SCROLL REVEAL */
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+/* COUNTERS */
+function animateCounters() {
+  document.querySelectorAll('[data-count]').forEach(counter => {
+    const target = parseInt(counter.dataset.count);
+    const start = performance.now();
+    function update(t) {
+      const p = Math.min((t - start) / 2000, 1);
+      const e = 1 - Math.pow(1 - p, 3);
+      counter.textContent = Math.round(e * target) + (target === 4 ? '' : '+');
+      if (p < 1) requestAnimationFrame(update);
+    }
+    requestAnimationFrame(update);
+  });
+}
+const metricsObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { animateCounters(); metricsObs.unobserve(e.target); } });
+}, { threshold: 0.5 });
+const mg = document.querySelector('.metrics-grid');
+if (mg) metricsObs.observe(mg);
+
+/* PROJECT FILTER */
+function filterProjects(cat, btn) {
+  const cards = document.querySelectorAll('.project-card');
+  const tabs = document.querySelectorAll('.filter-tab');
+  tabs.forEach(t => t.classList.remove('active'));
+  btn.classList.add('active');
+
+  cards.forEach(card => {
+    if (cat === 'all' || card.dataset.cat === cat) {
+      card.style.display = '';
+    } else {
+      card.style.display = 'none';
+    }
+  });
+}
+
+/* PROJECT TOGGLE */
+function toggleProject(card) {
+  card.classList.toggle('expanded');
+}
+
+/* FORM */
+function handleSubmit(e) {
+  e.preventDefault();
+  const btn = e.target.querySelector('.form-submit');
+  const status = document.getElementById('formStatus');
+  btn.textContent = 'Sending...'; btn.disabled = true;
+  setTimeout(() => {
+    status.className = 'form-status success';
+    status.textContent = '\u2713 Message sent!';
+    btn.textContent = 'Sent!'; e.target.reset();
+    setTimeout(() => { btn.textContent = 'Send Message'; btn.disabled = false; status.className = 'form-status'; }, 4000);
+  }, 1500);
+}
+
+/* BACK TO TOP */
+const btt = document.getElementById('backToTop');
+window.addEventListener('scroll', () => { btt.classList.toggle('visible', window.scrollY > 500); });
+
+/* ACTIVE NAV */
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nav-links a');
+window.addEventListener('scroll', () => {
+  let cur = '';
+  sections.forEach(s => { if (scrollY >= s.offsetTop - 100) cur = s.id; });
+  navLinks.forEach(a => { a.classList.toggle('active', a.getAttribute('href') === '#' + cur); });
+});
+navLinks.forEach(a => {
+  a.addEventListener('click', (e) => {
+    e.preventDefault();
+    const t = document.querySelector(a.getAttribute('href'));
+    if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+});
+
+/* PNG EXPORT */
+function downloadLogoPNG() {
+  const svgString = `<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 32 32" fill="none">
+    <line x1="5" y1="5" x2="27" y2="27" stroke="#4d9fff" stroke-width="1.8" stroke-linecap="round"/>
+    <line x1="27" y1="5" x2="5" y2="27" stroke="#4d9fff" stroke-width="1.8" stroke-linecap="round"/>
+    <circle cx="5" cy="5" r="2.3" fill="none" stroke="#4d9fff" stroke-width="1.1"/><circle cx="5" cy="5" r="0.9" fill="#4d9fff"/>
+    <circle cx="27" cy="5" r="2.3" fill="none" stroke="#4d9fff" stroke-width="1.1"/><circle cx="27" cy="5" r="0.9" fill="#4d9fff"/>
+    <circle cx="5" cy="27" r="2.3" fill="none" stroke="#4d9fff" stroke-width="1.1"/><circle cx="5" cy="27" r="0.9" fill="#4d9fff"/>
+    <circle cx="27" cy="27" r="2.3" fill="none" stroke="#4d9fff" stroke-width="1.1"/><circle cx="27" cy="27" r="0.9" fill="#4d9fff"/>
+    <circle cx="16" cy="16" r="5.5" fill="none" stroke="#4d9fff" stroke-width="0.6" opacity="0.3"/>
+    <circle cx="16" cy="16" r="8" fill="none" stroke="#4d9fff" stroke-width="0.4" opacity="0.12"/>
+    <circle cx="16" cy="16" r="2.8" fill="none" stroke="#4d9fff" stroke-width="1.2"/><circle cx="16" cy="16" r="1.1" fill="#4d9fff"/>
+    <circle cx="16" cy="16" r="7" fill="url(#g)" opacity="0.12"/>
+    <defs><radialGradient id="g"><stop stop-color="#4d9fff" stop-opacity="0.5"/><stop offset="1" stop-color="#4d9fff" stop-opacity="0"/></radialGradient></defs>
+  </svg>`;
+  const img = new Image();
+  img.onload = function() {
+    const c = document.createElement('canvas');
+    c.width = 1024; c.height = 1024;
+    const ctx = c.getContext('2d');
+    ctx.drawImage(img, 0, 0, 1024, 1024);
+    const a = document.createElement('a');
+    a.download = 'xavier-mareca-logo.png';
+    a.href = c.toDataURL('image/png');
+    a.click();
+  };
+  img.src = 'data:image/svg+xml;base64,' + btoa(unescape(encodeURIComponent(svgString)));
+}
+</script>
+
 </body>
 </html>
