@@ -208,6 +208,13 @@
       font-family: var(--mono); font-size: 12px; color: var(--accent);
       letter-spacing: 0.04em; margin-bottom: 1rem;
     }
+    .about-badge {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--accent); background: var(--accent-dim); border: 1px solid var(--accent-border);
+      padding: 0.3rem 0.85rem; border-radius: 100px; margin-bottom: 1rem;
+    }
+    .about-badge-dot { font-size: 8px; }
     .about-text {
       font-size: 14px; color: var(--text-secondary); line-height: 1.8;
       max-width: 660px; margin-bottom: 1.75rem;
@@ -302,7 +309,7 @@
     .project-card-body { padding: 1.15rem 1.25rem; flex: 1; display: flex; flex-direction: column; gap: 0.6rem; }
     .project-card-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 0.5rem; }
     .project-title {
-      font-family: var(--mono); font-size: 13px; font-weight: 700; color: var(--text-primary); line-height: 1.35;
+      font-family: var(--mono); font-size: 13.5px; font-weight: 700; color: var(--text-primary); line-height: 1.35;
     }
     .project-badge {
       font-family: var(--mono); font-size: 8px;
@@ -311,14 +318,14 @@
     .badge-live { color: #22c55e; background: rgba(34,197,94,0.1); border: 1px solid rgba(34,197,94,0.2); }
     .badge-new { color: var(--accent-purple); background: var(--accent-purple-dim); border: 1px solid var(--accent-purple-border); }
     .badge-done { color: var(--accent-green); background: var(--accent-green-dim); border: 1px solid var(--accent-green-border); }
-    .project-desc { font-size: 12.5px; color: var(--text-muted); line-height: 1.6; flex: 1; }
+    .project-desc { font-size: 13px; color: var(--text-secondary); line-height: 1.65; flex: 1; }
     .project-meta {
       display: flex; flex-wrap: wrap; gap: 0.3rem; margin-top: auto; padding-top: 0.6rem;
       border-top: 1px solid var(--border);
     }
     .stack-tag {
       font-family: var(--mono); font-size: 10px;
-      color: var(--text-muted); background: var(--bg-hover);
+      color: var(--text-secondary); background: var(--bg-hover);
       border: 1px solid var(--border); border-radius: 3px; padding: 0.2rem 0.5rem;
     }
     .project-details {
@@ -367,29 +374,60 @@
     .pill-cloud:hover { border-color: rgba(251,146,60,0.3); }
 
     /* CONTACT */
+    .contact-wrap {
+      margin-top: 1.5rem; display: grid; grid-template-columns: 1fr 1.4fr; gap: 1rem; align-items: start;
+    }
+    .contact-info {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 1.5rem; display: flex; flex-direction: column; gap: 1.1rem;
+    }
+    .contact-info-title {
+      font-family: var(--mono); font-size: 11px; font-weight: 700;
+      color: var(--text-primary); letter-spacing: 0.08em; text-transform: uppercase;
+    }
+    .contact-info-text { font-size: 13px; color: var(--text-muted); line-height: 1.7; }
+    .contact-links { display: flex; flex-direction: column; gap: 0.5rem; margin-top: 0.25rem; }
+    .contact-link {
+      display: flex; align-items: center; gap: 0.65rem;
+      font-family: var(--mono); font-size: 11px; color: var(--text-secondary);
+      text-decoration: none; padding: 0.6rem 0.85rem;
+      background: var(--bg); border: 1px solid var(--border);
+      border-radius: 6px; transition: all 0.18s;
+    }
+    .contact-link:hover { border-color: var(--accent-border); color: var(--accent); background: var(--accent-dim); }
+    .contact-link svg { width: 13px; height: 13px; flex-shrink: 0; }
+    .contact-link-label { opacity: 0.5; font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; margin-left: auto; }
+    .contact-availability {
+      display: flex; align-items: center; gap: 0.5rem;
+      font-family: var(--mono); font-size: 10px; color: var(--text-muted);
+      padding-top: 0.75rem; border-top: 1px solid var(--border);
+    }
+    .contact-availability-dot { width: 6px; height: 6px; border-radius: 50%; background: #22c55e; flex-shrink: 0; animation: pulse 2s ease infinite; }
+
     .contact-form {
-      margin-top: 1.25rem; background: var(--bg-card);
-      border: 1px solid var(--border); border-radius: var(--radius); padding: 1.25rem;
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 1.5rem;
     }
     .form-row { display: flex; gap: 0.65rem; margin-bottom: 0.65rem; }
-    .form-group { flex: 1; }
+    .form-group { flex: 1; margin-bottom: 0.65rem; }
+    .form-group:last-child { margin-bottom: 0; }
     .form-label {
       display: block; font-family: var(--mono); font-size: 9px;
       color: var(--text-muted); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 0.35rem;
     }
     .form-input, .form-textarea {
-      width: 100%; background: var(--bg-hover); border: 1px solid var(--border);
+      width: 100%; background: var(--bg); border: 1px solid var(--border);
       border-radius: 6px; padding: 0.6rem 0.85rem; font-family: var(--sans);
       font-size: 14px; color: var(--text-primary); outline: none; transition: border-color 0.18s;
     }
     .form-input:focus, .form-textarea:focus { border-color: var(--accent-border); }
-    .form-textarea { resize: vertical; min-height: 90px; }
+    .form-textarea { resize: vertical; min-height: 100px; }
     .form-submit {
       width: 100%; background: var(--accent); color: #0a0b0e;
       border: none; border-radius: 6px; padding: 0.75rem;
       font-family: var(--mono); font-size: 11px; font-weight: 700;
       letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer;
-      transition: all 0.18s; margin-top: 0.2rem;
+      transition: all 0.18s; margin-top: 0.75rem;
     }
     .form-submit:hover { background: #3d8fee; }
     .form-status { margin-top: 0.6rem; font-family: var(--mono); font-size: 11px; text-align: center; display: none; }
@@ -401,13 +439,24 @@
     .form-hint a { color: var(--accent); text-decoration: none; }
     .form-hint a:hover { text-decoration: underline; }
 
+    @media (max-width: 768px) {
+      .contact-wrap { grid-template-columns: 1fr; }
+    }
+
     /* FOOTER */
     footer { border-top: 1px solid var(--border); padding: 1.75rem 0; margin-top: 0.5rem; }
-    .footer-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.75rem; }
+    .footer-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
     .footer-left { font-family: var(--mono); font-size: 11px; color: var(--text-muted); }
     .footer-left strong { color: var(--text-secondary); }
-    .footer-right { font-family: var(--mono); font-size: 10px; color: var(--text-muted); display: flex; align-items: center; gap: 0.5rem; }
-    .footer-dot { width: 5px; height: 5px; border-radius: 50%; background: #22c55e; animation: pulse 2s ease infinite; }
+    .footer-links { display: flex; align-items: center; gap: 0.75rem; }
+    .footer-link {
+      display: flex; align-items: center; gap: 0.4rem;
+      font-family: var(--mono); font-size: 10px; color: var(--text-muted);
+      text-decoration: none; transition: color 0.15s;
+    }
+    .footer-link:hover { color: var(--accent); }
+    .footer-link svg { width: 11px; height: 11px; flex-shrink: 0; }
+    .footer-sep { color: var(--border-hover); font-size: 10px; }
     @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(0.8)} }
 
     .back-to-top {
@@ -495,7 +544,6 @@
       <a href="#focus">Focus</a>
       <a href="#projects">Projects</a>
       <a href="#stack">Stack</a>
-      <a href="#contact">Contact</a>
     </div>
   </div>
 </nav>
@@ -505,7 +553,7 @@
   <div class="hero">
     <h1><span class="name">Xavier</span><br><span class="accent">Mareca</span><span class="cursor"></span></h1>
     <p class="hero-role">Data &amp; AI Consultant</p>
-    <p class="hero-tagline">I help mid-size European companies turn their data into <strong>intelligent systems</strong> — combining modern BI, LLM applications, and cloud automation.</p>
+    <p class="hero-tagline">Practical data and AI systems for <strong>mid-size European companies</strong> — without the hype.</p>
     <div class="hero-actions">
       <a class="btn btn-primary" href="https://www.linkedin.com/in/xavier-mareca-247344148/?locale=en" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
@@ -515,12 +563,12 @@
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
         GitHub
       </a>
+      <a class="btn btn-ghost" href="https://x.com/xavierdatatech" target="_blank" rel="noopener" aria-label="X">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.737-8.835L1.254 2.25H8.08l4.253 5.622 5.911-5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+      </a>
       <a class="btn btn-ghost" href="mailto:hello@xavierdatatech.com">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
         Email
-      </a>
-      <a class="btn btn-ghost" href="https://x.com/xavierdatatech" target="_blank" rel="noopener" aria-label="X">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.737-8.835L1.254 2.25H8.08l4.253 5.622 5.911-5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
       </a>
     </div>
 
@@ -546,50 +594,47 @@
 
   <section id="about">
     <div class="section-header"><span class="section-tag">Background</span><div class="section-line"></div></div>
-    <h2 class="reveal">About</h2>
-    <div class="reveal reveal-delay-1">
-      <p class="about-hook">Data is my language. I've been speaking it since 1984.</p>
-      <p class="about-text">
-        I'm Xavier Mareca, an independent Data &amp; AI Consultant and founder of XDT Studio. I help mid-size European companies turn their data into intelligent systems — without the hype.
-      </p>
-      <p class="about-text">
-        I build production-ready AI applications and modern data platforms using AWS, Microsoft Fabric, LangChain, and Python. My work focuses on RAG pipelines, multi-agent systems, and cloud-native data engineering.
-      </p>
-      <p class="about-text">
-        With decades of experience in data — from Oracle and SQL Server to today's AI stack — I bring a practical, results-driven approach to every project. I speak Spanish, French, English, and German, which helps me work seamlessly with teams across Europe.
-      </p>
-    </div>
+
+    <h2 class="reveal" style="font-size:clamp(1.5rem,3.5vw,2.1rem);line-height:1.2;margin-bottom:0.6rem;">
+      Not just dashboards.<br><span style="color:var(--accent);">Intelligent data systems.</span>
+    </h2>
+    <p class="reveal reveal-delay-1" style="font-size:13.5px;color:var(--text-muted);max-width:560px;line-height:1.75;margin-bottom:1.75rem;">
+      I build RAG pipelines, multi-agent systems, and cloud-native data platforms for mid-size European companies — with AWS, Microsoft Fabric, LangChain and Python. Practical. Production-ready. Without the hype.
+    </p>
+
     <div class="about-areas reveal reveal-delay-2">
       <div class="about-area area-ai">
         <div class="about-area-icon" style="background:rgba(167,139,250,0.1);border:1px solid rgba(167,139,250,0.18);">
           <svg viewBox="0 0 24 24" fill="#a78bfa"><path d="M12 2a2 2 0 0 1 2 2c0 .74-.4 1.39-1 1.73V7h1a7 7 0 0 1 7 7h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1.07A7 7 0 0 1 14 23h-4a7 7 0 0 1-5.93-4H3a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h1a7 7 0 0 1 7-7h1V5.73c-.6-.34-1-.99-1-1.73a2 2 0 0 1 2-2z"/></svg>
         </div>
         <div class="about-area-title" style="color:var(--accent-purple);">AI &amp; LLMs</div>
-        <div class="about-area-text">
-          <span>RAG pipelines</span>, local AI deployments with Ollama and LangChain, migrating legacy systems into cloud-based AI.
-        </div>
+        <div class="about-area-text"><span>RAG pipelines</span>, LangChain, CrewAI agents, Anthropic Claude integrations.</div>
       </div>
       <div class="about-area area-cloud">
         <div class="about-area-icon" style="background:rgba(251,146,60,0.1);border:1px solid rgba(251,146,60,0.18);">
           <svg viewBox="0 0 24 24" fill="#fb923c"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg>
         </div>
         <div class="about-area-title" style="color:var(--accent-orange);">Cloud Engineering</div>
-        <div class="about-area-text">
-          <span>AWS serverless</span> — SageMaker, Lambda, DynamoDB, API Gateway, EventBridge — and <span>Microsoft Fabric</span> data lakehouse.
-        </div>
+        <div class="about-area-text"><span>AWS SageMaker</span>, Lambda, Step Functions — serverless, event-driven architectures.</div>
       </div>
       <div class="about-area area-bi">
         <div class="about-area-icon" style="background:rgba(77,159,255,0.1);border:1px solid rgba(77,159,255,0.18);">
-          <svg viewBox="0 0 24 24" fill="#4d9fff"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/></svg>
+          <!-- Power BI logo -->
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <rect x="2" y="11" width="4" height="10" rx="1" fill="#F2C811"/>
+            <rect x="8" y="7" width="4" height="14" rx="1" fill="#F2C811" opacity="0.85"/>
+            <rect x="14" y="3" width="4" height="18" rx="1" fill="#F2C811" opacity="0.7"/>
+            <rect x="20" y="1" width="2" height="20" rx="1" fill="#F2C811" opacity="0.5"/>
+          </svg>
         </div>
         <div class="about-area-title" style="color:var(--accent);">Business Intelligence</div>
-        <div class="about-area-text">
-          <span>Advanced semantic models</span>, complex DAX logic, high-performance analytics workflows via Power BI.
-        </div>
+        <div class="about-area-text"><span>Advanced DAX</span>, semantic models, high-performance Power BI analytics.</div>
       </div>
     </div>
+
     <div class="about-footer reveal reveal-delay-3">
-      <strong>AWS ML Engineer Associate</strong> certified. Working with Databricks (Delta Lake, Spark, Unity Catalog). Publishes tech analyses on enterprise tools and serverless computing on <a href="https://www.linkedin.com/in/xavier-mareca-247344148/?locale=en" target="_blank" rel="noopener">LinkedIn</a> and at <a href="https://xdt.ai" target="_blank" rel="noopener">XDT.AI</a>.
+      116 Microsoft Learn badges · XDT Studio · speaks ES · FR · EN · DE ·
+      <a href="https://www.linkedin.com/in/xavier-mareca-247344148/?locale=en" target="_blank" rel="noopener">LinkedIn</a> · <a href="https://xdt.ai" target="_blank" rel="noopener">XDT.AI</a>
     </div>
   </section>
 
@@ -599,29 +644,22 @@
     <div class="focus-timeline reveal reveal-delay-1">
       <div class="focus-item active">
         <div class="focus-content">
-          <div class="focus-title">AWS Machine Learning Engineer</div>
-          <div class="focus-text">Building production ML pipelines with SageMaker, Lambda, and Step Functions</div>
+          <div class="focus-title">AWS MLA-C01 · DP-700</div>
+          <div class="focus-text">ML Engineering + Microsoft Fabric — dual exam track, 2026</div>
         </div>
         <span class="focus-badge">In Progress</span>
       </div>
       <div class="focus-item">
         <div class="focus-content">
           <div class="focus-title">Multi-Agent Systems</div>
-          <div class="focus-text">Exploring CrewAI and LangGraph for complex AI workflows</div>
+          <div class="focus-text">CrewAI and LangGraph for complex AI workflows</div>
         </div>
         <span class="focus-badge researching">Researching</span>
       </div>
       <div class="focus-item completed">
         <div class="focus-content">
           <div class="focus-title">Anthropic Claude Integration</div>
-          <div class="focus-text">Production RAG systems with Claude 3.5 Sonnet and Haiku</div>
-        </div>
-        <span class="focus-badge completed">Completed</span>
-      </div>
-      <div class="focus-item completed">
-        <div class="focus-content">
-          <div class="focus-title">Power BI Advanced Analytics</div>
-          <div class="focus-text">Enterprise dashboards with DAX optimization and incremental refresh</div>
+          <div class="focus-text">Production RAG systems with LangChain and ChromaDB</div>
         </div>
         <span class="focus-badge completed">Completed</span>
       </div>
@@ -637,7 +675,7 @@
       <button class="filter-tab" data-filter="ai" onclick="filterProjects('ai', this)">AI &amp; LLMs</button>
       <button class="filter-tab" data-filter="bi" onclick="filterProjects('bi', this)">BI &amp; Analytics</button>
       <button class="filter-tab" data-filter="data" onclick="filterProjects('data', this)">Data Engineering</button>
-      <button class="filter-filter" data-filter="cloud" onclick="filterProjects('cloud', this)">Cloud</button>
+      <button class="filter-tab" data-filter="cloud" onclick="filterProjects('cloud', this)">Cloud &amp; APIs</button>
     </div>
 
     <div class="projects-grid">
@@ -814,14 +852,21 @@
     <div style="margin-top:1.25rem;">
       <div class="stack-category reveal reveal-delay-1">
         <div class="stack-category-header">
-          <div class="stack-category-icon" style="background:rgba(77,159,255,0.08);border:1px solid rgba(77,159,255,0.15);"><svg viewBox="0 0 24 24" fill="#4d9fff"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/></svg></div>
+          <div class="stack-category-icon" style="background:rgba(77,159,255,0.08);border:1px solid rgba(77,159,255,0.15);">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="12" height="12">
+              <rect x="2" y="12" width="3.5" height="9" rx="0.8" fill="#F2C811"/>
+              <rect x="7" y="8" width="3.5" height="13" rx="0.8" fill="#F2C811" opacity="0.85"/>
+              <rect x="12" y="4" width="3.5" height="17" rx="0.8" fill="#F2C811" opacity="0.7"/>
+              <rect x="17" y="1" width="3" height="20" rx="0.8" fill="#F2C811" opacity="0.5"/>
+            </svg>
+          </div>
           <span class="stack-category-title" style="color:#4d9fff;">Business Intelligence</span>
         </div>
         <div class="pills">
           <div class="pill pill-bi">Power BI</div>
-          <div class="pill pill-bi">Microsoft Fabric</div>
           <div class="pill pill-bi">DAX</div>
           <div class="pill pill-bi">SQL Server</div>
+          <div class="pill pill-bi">Semantic Models</div>
         </div>
       </div>
       <div class="stack-category reveal reveal-delay-2">
@@ -860,6 +905,7 @@
         <div class="pills">
           <div class="pill pill-cloud">Azure</div>
           <div class="pill pill-cloud">AWS</div>
+          <div class="pill pill-cloud">Microsoft Fabric</div>
           <div class="pill pill-cloud">FastAPI</div>
           <div class="pill pill-cloud">Docker</div>
           <div class="pill pill-cloud">GitHub Actions</div>
@@ -868,30 +914,36 @@
     </div>
   </section>
 
-  <section id="contact">
-    <div class="section-header"><span class="section-tag">Connect</span><div class="section-line"></div></div>
-    <h2 class="reveal">Get in touch</h2>
-    <p class="reveal reveal-delay-1" style="font-size:13px;color:var(--text-muted);margin-bottom:0;">Let's talk about your data challenges.</p>
-    <div class="contact-form reveal reveal-delay-2">
-      <form id="contactForm" onsubmit="handleSubmit(event)">
-        <div class="form-row">
-          <div class="form-group"><label class="form-label" for="name">Name</label><input type="text" id="name" class="form-input" required placeholder="Your name" /></div>
-          <div class="form-group"><label class="form-label" for="email">Email</label><input type="email" id="email" class="form-input" required placeholder="you@company.com" /></div>
-        </div>
-        <div class="form-group" style="margin-bottom:0.65rem;"><label class="form-label" for="message">Message</label><textarea id="message" class="form-textarea" required placeholder="Tell me about your project or challenge..."></textarea></div>
-        <button type="submit" class="form-submit">Send Message</button>
-        <div id="formStatus" class="form-status"></div>
-        <p class="form-hint">Prefer email? <a href="mailto:hello@xavierdatatech.com">hello@xavierdatatech.com</a></p>
-      </form>
-    </div>
-  </section>
+
 
 </div>
 
 <footer>
   <div class="wrap footer-inner">
     <div class="footer-left"><strong>Xavier Mareca</strong> · Data &amp; AI Consultant · EU</div>
-    <div class="footer-right"><div class="footer-dot"></div>Available for projects</div>
+    <div class="footer-links">
+      <a class="footer-link" href="mailto:hello@xavierdatatech.com">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+        Email
+      </a>
+      <span class="footer-sep">·</span>
+      <a class="footer-link" href="https://linkedin.com/in/xavier-mareca" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        LinkedIn
+      </a>
+      <span class="footer-sep">·</span>
+      <a class="footer-link" href="https://github.com/xdt-ai" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+        GitHub
+      </a>
+      <span class="footer-sep">·</span>
+      <a class="footer-link" href="https://x.com/xavierdatatech" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.737-8.835L1.254 2.25H8.08l4.253 5.622 5.911-5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        X
+      </a>
+      <span class="footer-sep">·</span>
+      <span class="footer-link" style="cursor:default;pointer-events:none;">© 2025 xavierdatatech.com</span>
+    </div>
   </div>
 </footer>
 
