@@ -318,6 +318,7 @@
     .badge-live { color: #22c55e; background: rgba(34,197,94,0.1); border: 1px solid rgba(34,197,94,0.2); }
     .badge-new { color: var(--accent-purple); background: var(--accent-purple-dim); border: 1px solid var(--accent-purple-border); }
     .badge-done { color: var(--accent-green); background: var(--accent-green-dim); border: 1px solid var(--accent-green-border); }
+    .badge-portfolio { color: var(--accent); background: var(--accent-dim); border: 1px solid var(--accent-border); }
     .project-desc { font-size: 13px; color: var(--text-secondary); line-height: 1.65; flex: 1; }
     .project-meta {
       display: flex; flex-wrap: wrap; gap: 0.3rem; margin-top: auto; padding-top: 0.6rem;
@@ -557,7 +558,7 @@
   <div class="hero">
     <h1><span class="name">Xavier</span><br><span class="accent">Mareca</span><span class="cursor"></span></h1>
     <p class="hero-role">Data &amp; AI Consultant</p>
-    <p class="hero-tagline">Practical data and AI systems for <strong>mid-size European companies</strong> — without the hype.</p>
+    <p class="hero-tagline">Practical data and AI systems. <strong>Without the hype.</strong></p>
     <div class="hero-actions">
       <a class="btn btn-primary" href="https://www.linkedin.com/in/xavier-mareca-247344148/?locale=en" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
@@ -686,9 +687,9 @@
         <div class="project-body">
           <div class="project-top">
             <p class="project-title">AI-Powered BI Assistant</p>
-            <span class="project-badge badge-live">LIVE</span>
+            <span class="project-badge badge-portfolio">PORTFOLIO</span>
           </div>
-          <p class="project-desc">Natural language querying over structured data with semantic understanding. 86 integration tests, sub-3s response time.</p>
+          <p class="project-desc">Natural language querying over structured data. RAG pipeline with full test suite — 86 integration tests with pytest.</p>
           <div class="project-meta">
             <span class="stack-tag">LangChain</span>
             <span class="stack-tag">RAG</span>
@@ -699,9 +700,8 @@
           <span class="project-result"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>v1.0.0</span>
           <div class="project-details">
             <div class="project-details-inner">
-              • 86 integration tests with <code>pytest</code><br>
               • Handles complex JOINs and aggregations<br>
-              • Deployed on AWS ECS with auto-scaling
+              • CI/CD with GitHub Actions
             </div>
           </div>
         </div>
@@ -711,9 +711,9 @@
         <div class="project-body">
           <div class="project-top">
             <p class="project-title">HR RAG Assistant</p>
-            <span class="project-badge badge-live">LIVE</span>
+            <span class="project-badge badge-portfolio">PORTFOLIO</span>
           </div>
-          <p class="project-desc">Multi-turn conversational assistant over HR policies. 50+ document ingestion, session-based memory, 95% accuracy.</p>
+          <p class="project-desc">Multi-turn conversational assistant over HR policy documents. Session memory, automatic re-indexing on document updates.</p>
           <div class="project-meta">
             <span class="stack-tag">LangChain</span>
             <span class="stack-tag">ChromaDB</span>
@@ -721,11 +721,11 @@
             <span class="stack-tag">FastAPI</span>
             <span class="stack-tag">GitHub Actions</span>
           </div>
-          <span class="project-result"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>CI/CD Ready</span>
+          <span class="project-result"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>CI/CD</span>
           <div class="project-details">
             <div class="project-details-inner">
-              • Session memory with <code>Redis</code><br>
-              • Automatic re-indexing on doc updates<br>
+              • ConversationalRetrievalChain with memory<br>
+              • Docker + GitHub Actions pipeline
             </div>
           </div>
         </div>
@@ -735,19 +735,20 @@
         <div class="project-body">
           <div class="project-top">
             <p class="project-title">Sales Analytics Pipeline</p>
-            <span class="project-badge badge-done">DONE</span>
+            <span class="project-badge badge-portfolio">PORTFOLIO</span>
           </div>
-          <p class="project-desc">End-to-end data pipeline from 10+ sources to executive dashboards. 500GB+ daily, 80% less compute.</p>
+          <p class="project-desc">End-to-end pipeline from multiple sources to Power BI dashboards. PySpark + Delta Lake + star schema.</p>
           <div class="project-meta">
             <span class="stack-tag">PySpark</span>
             <span class="stack-tag">Delta Lake</span>
             <span class="stack-tag">Power BI</span>
             <span class="stack-tag">Azure</span>
           </div>
-          <span class="project-result"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>10x Faster</span>
+          <span class="project-result"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>Medallion arch.</span>
           <div class="project-details">
             <div class="project-details-inner">
-              • Real-time KPI alerts<br>
+              • Bronze / Silver / Gold layers<br>
+              • Incremental refresh in Fabric
             </div>
           </div>
         </div>
@@ -757,19 +758,20 @@
         <div class="project-body">
           <div class="project-top">
             <p class="project-title">Document Intelligence</p>
-            <span class="project-badge badge-done">DONE</span>
+            <span class="project-badge badge-portfolio">PORTFOLIO</span>
           </div>
-          <p class="project-desc">Automated extraction from unstructured documents. 98% accuracy, saves 40+ hours/week of manual work.</p>
+          <p class="project-desc">Automated extraction from unstructured documents using Claude + AWS Textract. JSON output with confidence scores.</p>
           <div class="project-meta">
             <span class="stack-tag">Claude</span>
             <span class="stack-tag">Python</span>
             <span class="stack-tag">AWS Textract</span>
             <span class="stack-tag">S3</span>
           </div>
-          <span class="project-result"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>98% Accuracy</span>
+          <span class="project-result"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>Structured output</span>
           <div class="project-details">
             <div class="project-details-inner">
-              • JSON output with confidence scores<br>
+              • Serverless on AWS Lambda<br>
+              • Confidence scoring per field
             </div>
           </div>
         </div>
@@ -779,19 +781,20 @@
         <div class="project-body">
           <div class="project-top">
             <p class="project-title">Serverless Data Pipeline</p>
-            <span class="project-badge badge-live">LIVE</span>
+            <span class="project-badge badge-portfolio">PORTFOLIO</span>
           </div>
-          <p class="project-desc">Event-driven serverless architecture on AWS. Lambda, EventBridge, DynamoDB, API Gateway.</p>
+          <p class="project-desc">Event-driven architecture on AWS. Lambda + EventBridge + DynamoDB + API Gateway — SageMaker lab series.</p>
           <div class="project-meta">
             <span class="stack-tag">AWS</span>
             <span class="stack-tag">Lambda</span>
             <span class="stack-tag">DynamoDB</span>
-            <span class="stack-tag">API Gateway</span>
+            <span class="stack-tag">SageMaker</span>
           </div>
-          <span class="project-result"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>Serverless</span>
+          <span class="project-result"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>7 labs</span>
           <div class="project-details">
             <div class="project-details-inner">
-              • Event-driven architecture pattern<br>
+              • Model Monitor + drift detection<br>
+              • Step Functions orchestration
             </div>
           </div>
         </div>
