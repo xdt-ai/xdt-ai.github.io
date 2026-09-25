@@ -104,17 +104,7 @@
     .nav-inner { display: flex; align-items: center; justify-content: space-between; }
     .nav-logo-wrap { position: relative; display: flex; align-items: center; }
     .nav-logo { text-decoration: none; display: flex; align-items: center; }
-    .logo-dl {
-      position: absolute; top: -4px; right: -10px;
-      width: 18px; height: 18px; border-radius: 4px;
-      background: var(--bg-card); border: 1px solid var(--border);
-      display: flex; align-items: center; justify-content: center;
-      opacity: 0; transition: opacity 0.2s; cursor: pointer; z-index: 10;
-    }
-    .logo-dl:hover { border-color: var(--accent-border); background: var(--bg-card-hover); }
-    .logo-dl svg { width: 10px; height: 10px; fill: var(--text-muted); }
-    .nav-logo-wrap:hover .logo-dl { opacity: 0.8; }
-    .nav-logo-wrap:hover .logo-dl:hover { opacity: 1; }
+    a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
     .nav-links { display: flex; gap: 2rem; align-items: center; }
     .nav-links a {
       font-family: var(--mono); font-size: 14px; letter-spacing: 0.08em;
@@ -325,7 +315,6 @@
     .footer-link:hover { color: var(--accent); }
     .footer-link svg { width: 11px; height: 11px; flex-shrink: 0; }
     .footer-sep { color: var(--border-hover); font-size: 13px; }
-    @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(0.8)} }
     .back-to-top {
       position: fixed; bottom: 2.5rem; right: 1.5rem; z-index: 99;
       width: 36px; height: 36px; border-radius: 6px;
@@ -336,7 +325,7 @@
     }
     .back-to-top.visible { opacity: 1; transform: translateY(0); pointer-events: auto; }
     .back-to-top:hover { border-color: var(--accent-border); background: var(--bg-card-hover); }
-    .back-to-top svg { width: 16px; height: 16px; fill: var(--text-secondary); }
+    .back-to-top svg { width: 16px; height: 16px; fill: none; stroke: var(--text-secondary); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
     ::-webkit-scrollbar { width: 5px; }
     ::-webkit-scrollbar-track { background: var(--bg); }
     ::-webkit-scrollbar-thumb { background: var(--border-hover); border-radius: 3px; }
@@ -350,7 +339,7 @@
     .nav-logo:hover .nav-logo-img { animation: none; opacity: 1; }
     .nav-logo-img.scrolled { animation: none; opacity: 0.8; }
     @media (prefers-reduced-motion: reduce) {
-      .reveal { transition: none; }
+      .reveal { transition: none; opacity: 1; transform: none; }
       .hero { animation: none; opacity: 1; }
       .cursor { animation: none; }
       .nav-logo-img { animation: none; }
@@ -428,24 +417,16 @@
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
         LinkedIn
       </a>
-      <a class="btn btn-ghost" href="https://github.com/xdt-ai" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-        GitHub
-      </a>
-      <a class="btn btn-ghost" href="https://x.com/xavierdatatech" target="_blank" rel="noopener" aria-label="X">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.737-8.835L1.254 2.25H8.08l4.253 5.622 5.911-5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-        X
-      </a>
       <button class="btn btn-ghost" onclick="copyEmail(this)">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
         E-mail
       </button>
     </div>
     <div class="metrics-grid reveal">
-      <div class="metric-card"><div class="metric-value" data-count="8">0</div><div class="metric-label">Years in BI</div></div>
-      <div class="metric-card"><div class="metric-value green" data-count="10">0</div><div class="metric-label">Projects Delivered</div></div>
-      <div class="metric-card"><div class="metric-value purple" data-count="5">0</div><div class="metric-label">AI Apps Built</div></div>
-      <div class="metric-card"><div class="metric-value orange" data-count="4">0</div><div class="metric-label">EU Languages</div></div>
+      <div class="metric-card"><div class="metric-value" >8+</div><div class="metric-label">Years in BI</div></div>
+      <div class="metric-card"><div class="metric-value green" >10+</div><div class="metric-label">Projects Delivered</div></div>
+      <div class="metric-card"><div class="metric-value purple" >5+</div><div class="metric-label">AI Apps Built</div></div>
+      <div class="metric-card"><div class="metric-value orange" >4</div><div class="metric-label">EU Languages</div></div>
     </div>
   </div>
   <section id="about">
@@ -495,8 +476,8 @@
     <div class="focus-timeline reveal reveal-delay-1">
       <div class="focus-item active">
         <div class="focus-content">
-          <div class="focus-title">AWS MLA&#8209;C01 &middot; DP&#8209;700</div>
-          <div class="focus-text">ML Engineering + Microsoft Fabric &mdash; dual exam track, 2026</div>
+          <div class="focus-title">AWS ML Engineer &middot; MLA&#8209;C02</div>
+          <div class="focus-text">SageMaker, MLOps and Bedrock &mdash; certification track, 2026</div>
         </div>
         <span class="focus-badge">In Progress</span>
       </div>
@@ -520,11 +501,11 @@
     <div class="section-header"><span class="section-tag">Work</span><div class="section-line"></div></div>
     <h2 class="reveal">Selected projects</h2>
     <div class="filter-tabs reveal reveal-delay-1">
-      <button class="filter-tab active" data-filter="all" onclick="filterProjects('all', this)">All Projects</button>
-      <button class="filter-tab" data-filter="ai" onclick="filterProjects('ai', this)">AI &amp; LLMs</button>
-      <button class="filter-tab" data-filter="bi" onclick="filterProjects('bi', this)">BI &amp; Analytics</button>
-      <button class="filter-tab" data-filter="data" onclick="filterProjects('data', this)">Data Engineering</button>
-      <button class="filter-tab" data-filter="cloud" onclick="filterProjects('cloud', this)">Cloud &amp; APIs</button>
+      <button class="filter-tab active" aria-pressed="true" data-filter="all" onclick="filterProjects('all', this)">All Projects</button>
+      <button class="filter-tab" aria-pressed="false" data-filter="ai" onclick="filterProjects('ai', this)">AI &amp; LLMs</button>
+      <button class="filter-tab" aria-pressed="false" data-filter="bi" onclick="filterProjects('bi', this)">BI &amp; Analytics</button>
+      <button class="filter-tab" aria-pressed="false" data-filter="data" onclick="filterProjects('data', this)">Data Engineering</button>
+      <button class="filter-tab" aria-pressed="false" data-filter="cloud" onclick="filterProjects('cloud', this)">Cloud &amp; APIs</button>
     </div>
     <div class="projects-grid">
       <div class="project-card card-ai reveal" data-cat="ai">
@@ -676,7 +657,7 @@
         hello@xavierdatatech.com
       </a>
       <span class="footer-sep">&middot;</span>
-      <a class="footer-link" href="https://linkedin.com/in/xavier-mareca" target="_blank" rel="noopener">
+      <a class="footer-link" href="https://www.linkedin.com/in/xavier-mareca-247344148/?locale=en" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
         LinkedIn
       </a>
@@ -706,27 +687,9 @@ const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
 }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-function animateCounters() {
-  document.querySelectorAll('[data-count]').forEach(counter => {
-    const target = parseInt(counter.dataset.count);
-    const start = performance.now();
-    function update(t) {
-      const p = Math.min((t - start) / 2000, 1);
-      const e = 1 - Math.pow(1 - p, 3);
-      counter.textContent = Math.round(e * target) + (target === 4 ? '' : '+');
-      if (p < 1) requestAnimationFrame(update);
-    }
-    requestAnimationFrame(update);
-  });
-}
-const metricsObs = new IntersectionObserver((entries) => {
-  entries.forEach(e => { if (e.isIntersecting) { animateCounters(); metricsObs.unobserve(e.target); } });
-}, { threshold: 0.5 });
-const mg = document.querySelector('.metrics-grid');
-if (mg) metricsObs.observe(mg);
 function filterProjects(cat, btn) {
-  document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
-  btn.classList.add('active');
+  document.querySelectorAll('.filter-tab').forEach(t => { t.classList.remove('active'); t.setAttribute('aria-pressed','false'); });
+  btn.classList.add('active'); btn.setAttribute('aria-pressed','true');
   document.querySelectorAll('.project-card').forEach(card => {
     if (cat === 'all') {
       card.style.display = card.dataset.hiddenDefault ? 'none' : '';
@@ -736,7 +699,7 @@ function filterProjects(cat, btn) {
   });
 }
 const btt = document.getElementById('backToTop');
-window.addEventListener('scroll', () => { btt.classList.toggle('visible', window.scrollY > 500); });
+window.addEventListener('scroll', () => { btt.classList.toggle('visible', window.scrollY > 500); }, { passive: true });
 const sections = document.querySelectorAll('section[id]');
 const navLinks = document.querySelectorAll('.nav-links a');
 window.addEventListener('scroll', () => {
